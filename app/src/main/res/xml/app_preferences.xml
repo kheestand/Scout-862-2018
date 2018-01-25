@@ -1,0 +1,84 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="@string/group_title_one">
+
+        <EditTextPreference
+            android:defaultValue="@string/default_database_path"
+            android:key="@string/database_path_prefs_key"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/database_path_summary"
+            android:title="@string/database_path_title" />
+        <EditTextPreference
+            android:defaultValue="@string/default_picture_path"
+            android:key="@string/picture_path_prefs_key"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/picture_path_summary"
+            android:title="@string/picture_path_title" />
+        <EditTextPreference
+            android:defaultValue="@string/default_blue_alliance_path"
+            android:key="@string/blue_alliance_database_key"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/blue_alliance_database_summary"
+            android:title="@string/blue_alliance_database_title" />
+        <EditTextPreference
+            android:defaultValue="@string/settings_path_default"
+            android:key="@string/settings_path_key"
+            android:onClick="openSettingsDialog"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/settings_path_summary"
+            android:title="@string/settings_path_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/group_title_two">
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="@color/colorPrimary"
+            android:key="@string/primary_color_key"
+            android:summary="@string/primary_color_summary"
+            android:title="@string/primary_color_title" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="@color/colorPrimaryDark"
+            android:key="@string/primary_color_dark_key"
+            android:summary="@string/primary_color_dark_summary"
+            android:title="@string/primary_color_dark_title" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="@color/colorAccent"
+            android:key="@string/accent_color_key"
+            android:summary="@string/accent_color_summary"
+            android:title="@string/accent_color_title" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="@color/black"
+            android:key="@string/app_font_color_key"
+            android:summary="@string/app_font_color_summary"
+            android:title="@string/app_font_color_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/group_title_three">
+
+        <EditTextPreference
+            android:defaultValue="4000"
+            android:key="@string/splash_timeout_key"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/splash_timeout_summary"
+            android:title="@string/splash_timeout_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/group_title_four">
+
+        <EditTextPreference
+            android:defaultValue="2018"
+            android:key="@string/extra_year_key"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/extra_year_summary"
+            android:title="@string/extra_year_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

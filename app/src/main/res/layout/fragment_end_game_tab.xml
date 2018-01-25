@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp">
+
+        <Switch
+            android:id="@+id/cb_end_climb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Climb Rope" />
+
+        <Switch
+            android:id="@+id/cb_end_collectFuel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Can collect Fuel" />
+
+        <Switch
+            android:id="@+id/cb_end_stuck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/cb_end_climb"
+            android:text="Stuck on Fuel" />
+
+        <TextView
+            android:id="@+id/tv_end_otherComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/cb_end_stuck"
+            android:layout_marginTop="62dp"
+            android:background="@color/colorPrimary"
+            android:text="Other Comments:"
+            android:textSize="20sp"
+            android:textStyle="normal|bold" />
+
+        <Switch
+            android:id="@+id/cb_end_def"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/cb_end_collectFuel"
+            android:layout_alignStart="@+id/cb_end_collectFuel"
+            android:layout_below="@+id/cb_end_collectFuel"
+            android:text="Defence" />
+
+        <EditText
+            android:id="@+id/et_otherCpmments"
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_end_otherComments"
+            android:layout_gravity="start"
+            android:ems="10"
+            android:hint="Cool LEDS, Magic Smoke, Intentional Flipping, etc"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textStyle="normal|italic" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Scout–862–2018</string>
+    <string name="tab_1">Auto</string>
+    <string name="tab_2">Teleop</string>
+    <string name="tab_3">End Game</string>
+    <string name="setting_exit_toast">Restart App to apply new settings</string>
+    <string name="null_import_file">No File. Restart Activity!</string>
+    <string name="invalid_timeout_time">Invalid timeout Time</string>
+    <string name="unable_to_connect_server">Unable to connect to server</string>
+    <string name="unable_to_read_storage">Unable to read storage</string>
+    <string name="match_text">Match</string>
+    <string name="scouter_name">Enter Your Name:</string>
+    <string name="alliance_text">Alliance</string>
+    <string name="offical_team_name_text">Team Nickname</string>
+    <string name="team_location_text">Team Location</string>
+    <string name="event_text">Season Events</string>
+
+    <!-- Game specific strings 2017 -->
+    <string name="high_goal">Balls in High Goal</string>
+    <string name="low_goal">Balls in Low Goal</string>
+    <string name="gear_info">Gears Delivered</string>
+    <string name="auto_mobility_bonus">Mobility Bonus</string>
+    <string name="end_climb">Can Climb</string>
+    <string name="end_stuck_on_fuel">Stuck on Fuel</string>
+
+
+    <!-- Default for shared preferences -->
+    <string name="default_database_path">/Scout-862/#YEAR#/database/</string>
+    <string name="default_picture_path">/Scout-862/#YEAR#/pictures/</string>
+    <string name="default_blue_alliance_path">/Scout-862/#YEAR#/blue_alliance_data/</string>
+
+    <!-- Shared preferences menu items -->
+    <string name="prefs_file_name">scout862Prefs</string>
+    <string name="group_title_one">Paths</string>
+    <string name="group_title_two">Colors</string>
+    <string name="group_title_three">Splash Screen Settings</string>
+    <string name="group_title_four">Extra Settings</string>
+
+    <string name="database_path_title">Database Directory</string>
+    <string name="database_path_summary">Path where database files are stored</string>
+    <string name="database_path_prefs_key">scout862DatabasePath</string>
+
+    <string name="picture_path_title">Pictures Directory</string>
+    <string name="picture_path_summary">Path where pictures are stored</string>
+    <string name="picture_path_prefs_key">scout862PicturePath</string>
+
+    <string name="storage_type_title">Use Internal Storage</string>
+    <string name="storage_type_checked_text">Using Internal Storage</string>
+    <string name="storage_type_unchecked_text">Using External Storage</string>
+    <string name="storage_type_key">scout862StorageType</string>
+
+    <string name="primary_color_title">Primary Color</string>
+    <string name="primary_color_summary">The primary color for Scout 862</string>
+    <string name="primary_color_key">scout862PrimaryColor</string>
+
+    <string name="accent_color_title">Primary Color</string>
+    <string name="accent_color_summary">The accent color for Scout 862</string>
+    <string name="accent_color_key">scout862AccentColor</string>
+
+    <string name="primary_color_dark_title">Primary- Dark Color</string>
+    <string name="primary_color_dark_summary">The dark primary color for Scout 862</string>
+    <string name="primary_color_dark_key">scout862PrimaryDarkColor</string>
+
+    <string name="app_font_color_title">Font Color</string>
+    <string name="app_font_color_summary">The font color for Scout 862</string>
+    <string name="app_font_color_key">scout862FontColor</string>
+
+    <string name="splash_timeout_title">Splash Screen Timeout</string>
+    <string name="splash_timeout_summary">Timeout value for splash screen in milliseconds</string>
+    <string name="splash_timeout_key">scout862SplashTimeout</string>
+
+    <string name="blue_alliance_database_title">Blue Alliance Directory</string>
+    <string name="blue_alliance_database_summary">Path where data from the Blue Alliance is stored</string>
+    <string name="blue_alliance_database_key">scout862BlueAlliancePath</string>
+
+    <string name="settings_path_title">Path to settings file</string>
+    <string name="settings_path_summary">Path to shared settings file</string>
+    <string name="settings_path_key">scout862SettingsPath</string>
+    <string name="settings_path_default">/</string>
+
+    <string name="extra_year_key">scout862CompetitionYear </string>
+    <string name="extra_year_summary">The current competition season being played</string>
+    <string name="extra_year_title">Current Season</string>
+
+    <!-- Titles for activities -->
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_main_menu">Main Menu</string>
+    <string name="title_activity_pit_scouting">Pit Scouting</string>
+    <string name="title_activity_match_scouting">Match Scouting</string>
+    <string name="team_text">Team</string>
+
+    <!-- File Prefixes-->
+    <string name="file_prefix_all_team_page">all_teams_p_</string>
+    <string name="file_prefix_completed_comps_key">comp_keys_</string>
+    <string name="file_prefix_simple_comp_info">competition_info_</string>
+    <string name="file_prefix_team_data_at_comp">competition_team_data_</string>
+    <string name="file_prefix_all_comp_keys">all_comp_keys_</string>
+
+
+</resources>

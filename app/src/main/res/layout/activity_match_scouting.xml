@@ -1,0 +1,265 @@
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="120dp"
+    sothree:umanoShadowHeight="7dp">
+
+    <!-- Main Content -->
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:background="@color/colorPrimary"
+            android:elevation="6dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar" />
+    </LinearLayout>
+
+    <!-- Sliding up panel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/expanded_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true">
+
+                <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                    android:id="@+id/robot_picture"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="120dp"
+                    android:src="@drawable/default_match_robot"
+                    sothree:bootstrapBrand="info"
+                    sothree:hasBorder="true" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/team_alliance_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/alliance_text"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/alliance_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/team_alliance_text"
+                    android:layout_alignLeft="@+id/team_alliance_text"
+                    android:layout_alignRight="@+id/team_alliance_text"
+                    android:layout_alignStart="@+id/team_alliance_text"
+                    android:layout_below="@+id/team_alliance_text"
+                    android:textSize="28sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/team_robot_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/robot_picture"
+                    android:layout_alignLeft="@+id/robot_picture"
+                    android:layout_alignRight="@+id/robot_picture"
+                    android:layout_alignStart="@+id/robot_picture"
+                    android:layout_below="@+id/robot_picture"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/long_team_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/robot_picture"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_toRightOf="@+id/robot_picture"
+                    android:text="@string/offical_team_name_text"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/long_team_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/long_team_name_text"
+                    android:layout_alignLeft="@+id/long_team_name_text"
+                    android:layout_alignRight="@+id/long_team_name_text"
+                    android:layout_alignStart="@+id/long_team_name_text"
+                    android:layout_below="@+id/long_team_name_text"
+                    android:textSize="23sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/team_location_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/long_team_name"
+                    android:layout_alignLeft="@+id/long_team_name"
+                    android:layout_alignRight="@+id/long_team_name"
+                    android:layout_alignStart="@+id/long_team_name"
+                    android:layout_below="@+id/long_team_name"
+                    android:text="@string/team_location_text"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/team_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/team_location_text"
+                    android:layout_alignLeft="@+id/team_location_text"
+                    android:layout_alignRight="@+id/team_location_text"
+                    android:layout_alignStart="@+id/team_location_text"
+                    android:layout_below="@+id/team_location_text"
+                    android:textSize="23sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/events_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/events_scroller"
+                    android:layout_alignLeft="@+id/team_robot_text"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignStart="@+id/team_robot_text"
+                    android:text="@string/event_text"
+                    android:textSize="23sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/events_scroller"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center"
+                    android:background="@color/bootstrap_gray"
+                    android:textSize="28sp">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100sp">
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/matchText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/previousMatchArrow"
+                    android:layout_toRightOf="@+id/previousMatchArrow"
+                    android:text="@string/match_text"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/matchNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/matchText"
+                    android:layout_alignLeft="@+id/matchText"
+                    android:layout_alignRight="@+id/matchText"
+                    android:layout_alignStart="@+id/matchText"
+                    android:layout_below="@+id/matchText"
+                    android:text="100"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/previousMatchArrow"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/nextMatchArrow"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    app:fontAwesomeIcon="fa_android" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/nextMatchArrow"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    app:fontAwesomeIcon="fa_android" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/teamNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/teamNumberText"
+                    android:layout_alignLeft="@+id/teamNumberText"
+                    android:layout_alignRight="@+id/teamNumberText"
+                    android:layout_alignStart="@+id/teamNumberText"
+                    android:layout_below="@+id/teamNumberText"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/teamNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_toLeftOf="@+id/nextMatchArrow"
+                    android:layout_toStartOf="@+id/nextMatchArrow"
+                    android:text="@string/team_text"
+                    android:textSize="36sp" />
+
+                <com.beardedhen.androidbootstrap.BootstrapThumbnail
+                    android:id="@+id/robotThumbnail"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/default_match_robot"
+                    app:bootstrapBrand="info"
+                    app:hasBorder="true" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

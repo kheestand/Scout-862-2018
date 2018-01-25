@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/teleopHighGoalLayout"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true">
+
+        <SeekBar
+            android:id="@+id/teleopHighGoalScrollbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/teleopHighGoalSwitch" />
+
+        <Switch
+            android:id="@+id/teleopHighGoalSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/high_goal"
+            android:textSize="24sp" />
+
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:id="@+id/teleopHighGoalValueLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/teleopHighGoalScrollbar"
+            android:text="000"
+            app:bootstrapBrand="primary"
+            app:bootstrapHeading="h1"
+            app:roundedCorners="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/teleopLowGoalLayout"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <SeekBar
+            android:id="@+id/teleopLowGoalScrollbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/teleopLowGoalSwitch" />
+
+        <Switch
+            android:id="@+id/teleopLowGoalSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/low_goal"
+            android:textSize="24sp" />
+
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:id="@+id/teleopLowGoalValueLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/teleopLowGoalScrollbar"
+            android:text="000"
+            app:bootstrapBrand="primary"
+            app:bootstrapHeading="h1"
+            app:roundedCorners="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/teleopGearsDelivered"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/teleopLowGoalLayout"
+        android:layout_marginTop="22dp">
+
+        <Switch
+            android:id="@+id/teleopGearsDeliveredSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="36dp"
+            android:text="@string/gear_info"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/teleopCycleControls"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/teleopGearsDelivered"
+        android:layout_alignLeft="@+id/teleopHighGoalLayout"
+        android:layout_alignStart="@+id/teleopHighGoalLayout"
+        android:layout_alignTop="@+id/teleopGearsDelivered">
+
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            android:id="@+id/nextCycleArrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:fontAwesomeIcon="fa_android" />
+
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            android:id="@+id/previousCycleArrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/nextCycleArrow"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:fontAwesomeIcon="fa_android" />
+
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            android:id="@+id/cycleNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@+id/cycleText"
+            android:layout_alignLeft="@+id/cycleText"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/cycleText"
+            android:layout_alignStart="@+id/cycleText"
+            android:layout_below="@+id/cycleText"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <com.beardedhen.androidbootstrap.AwesomeTextView
+            android:id="@+id/cycleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Number of Cycles"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
