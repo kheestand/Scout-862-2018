@@ -21,16 +21,7 @@ import butterknife.ButterKnife;
 
 public class EndGameTab extends Fragment implements TabInterface {
     MatchDatabase matchDatabase = MatchScouting.matchDatabase;
-    @BindView(R.id.cb_end_climb)
-    Switch climbCheckbox;
-    @BindView(R.id.cb_end_collectFuel)
-    Switch collectFuelBox;
-    @BindView(R.id.cb_end_stuck)
-    Switch stuckOnFuelBox;
-    @BindView(R.id.cb_end_def)
-    Switch defenceCheckBox;
-    @BindView(R.id.et_otherCpmments)
-    EditText otherComments;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,19 +42,11 @@ public class EndGameTab extends Fragment implements TabInterface {
 
     @Override
     public void readTab() {
-        climbCheckbox.setChecked(matchDatabase.getBool(20));
-        collectFuelBox.setChecked(matchDatabase.getBool(23));
-        stuckOnFuelBox.setChecked(matchDatabase.getBool(21));
-        defenceCheckBox.setChecked(matchDatabase.getBool(22));
-        otherComments.setText(matchDatabase.get(24));
+
     }
 
     @Override
     public void writeTab() {
-        matchDatabase.add(climbCheckbox.isChecked(), 20);
-        matchDatabase.add(collectFuelBox.isChecked(), 23);
-        matchDatabase.add(stuckOnFuelBox.isChecked(), 21);
-        matchDatabase.add(defenceCheckBox.isChecked(), 22);
-        matchDatabase.add(otherComments.getText().toString(), 24);
+
     }
 }

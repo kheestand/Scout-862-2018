@@ -4,81 +4,84 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp">
-
-        <Switch
-            android:id="@+id/cb_end_climb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="Climb Rope" />
-
-        <Switch
-            android:id="@+id/cb_end_collectFuel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Can collect Fuel" />
-
-        <Switch
-            android:id="@+id/cb_end_stuck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/cb_end_climb"
-            android:text="Stuck on Fuel" />
+        android:orientation="vertical"
+        android:baselineAligned="false">
 
         <TextView
-            android:id="@+id/tv_end_otherComments"
-            android:layout_width="wrap_content"
+            android:id="@+id/robot_Type_Label"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/cb_end_stuck"
-            android:layout_marginTop="62dp"
-            android:background="@color/colorPrimary"
-            android:text="Other Comments:"
-            android:textSize="20sp"
-            android:textStyle="normal|bold" />
+            android:text="Please select the corresponding robot feature" />
 
-        <Switch
-            android:id="@+id/cb_end_def"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="222dp">
+
+            <RadioButton
+                android:id="@+id/ramp_Bot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ramp Bot" />
+
+            <RadioButton
+                android:id="@+id/rung_Bot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rung Bot" />
+
+            <RadioButton
+                android:id="@+id/neither_Bot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Neither" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/end_Game_Capabilities"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/cb_end_collectFuel"
-            android:layout_alignStart="@+id/cb_end_collectFuel"
-            android:layout_below="@+id/cb_end_collectFuel"
-            android:text="Defence" />
+            android:text="Please select the robot's end game feature" />
 
-        <EditText
-            android:id="@+id/et_otherCpmments"
-            android:layout_width="wrap_content"
-            android:layout_height="350dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/tv_end_otherComments"
-            android:layout_gravity="start"
-            android:ems="10"
-            android:hint="Cool LEDS, Magic Smoke, Intentional Flipping, etc"
-            android:inputType="textPersonName"
-            android:textAlignment="viewStart"
-            android:textStyle="normal|italic" />
-    </RelativeLayout>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="234dp">
+
+            <RadioButton
+                android:id="@+id/climbs_On_Ramp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Climbs on another Ramp Bot" />
+
+            <RadioButton
+                android:id="@+id/climbs_On_Field_Rung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Climbs on Field Rung" />
+
+            <RadioButton
+                android:id="@+id/climbs_Robot_Rung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Climbs on another Robot's Rung" />
+
+            <RadioButton
+                android:id="@+id/robot_Parks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Robot Parks" />
+
+        </RadioGroup>
+    </LinearLayout>
 
 </RelativeLayout>
