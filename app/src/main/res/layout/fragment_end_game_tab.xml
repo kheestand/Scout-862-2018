@@ -11,47 +11,43 @@
         android:baselineAligned="false">
 
         <TextView
-            android:id="@+id/robot_Type_Label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Please select the corresponding robot feature" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="222dp">
-
-            <RadioButton
-                android:id="@+id/ramp_Bot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Ramp Bot" />
-
-            <RadioButton
-                android:id="@+id/rung_Bot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rung Bot" />
-
-            <RadioButton
-                android:id="@+id/neither_Bot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Neither" />
-
-        </RadioGroup>
-
-        <TextView
             android:id="@+id/end_Game_Capabilities"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Please select the robot's end game feature" />
 
         <RadioGroup
+            android:id="@+id/robotEndGameButtons"
             android:layout_width="match_parent"
             android:layout_height="234dp">
+
+            <RadioButton
+                android:id="@+id/supports_Two_Ramp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rampbot Supports Two Robots" />
+
+            <RadioButton
+                android:id="@+id/supports_Two_Rung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rungbot Supports Two Robots" />
+
+            <RadioButton
+                android:id="@+id/supports_One_Ramp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rampbot Supports One Robot" />
+
+            <RadioButton
+                android:id="@+id/supports_One_Rung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rungbot Supports One Robot" />
 
             <RadioButton
                 android:id="@+id/climbs_On_Ramp"
