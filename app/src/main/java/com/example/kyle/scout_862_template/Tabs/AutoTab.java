@@ -87,17 +87,17 @@ public class AutoTab extends Fragment implements TabInterface {
     @Override
     public void readTab() {
         switch (matchDatabase.getInt(4)){
-            case 0:
+            case 1:
                 leftStartPos.setChecked(true);
                 centerStartPos.setChecked(false);
                 rightStartPos.setChecked(false);
                 break;
-            case 1:
+            case 2:
                 leftStartPos.setChecked(false);
                 centerStartPos.setChecked(true);
                 rightStartPos.setChecked(false);
                 break;
-            case 2:
+            case 3:
                 leftStartPos.setChecked(false);
                 centerStartPos.setChecked(false);
                 rightStartPos.setChecked(true);
@@ -123,12 +123,13 @@ public class AutoTab extends Fragment implements TabInterface {
     @Override
     public void writeTab() {
         if(leftStartPos.isChecked())
-            matchDatabase.add(0,4);
-        else if (centerStartPos.isChecked())
             matchDatabase.add(1,4);
-        else if (rightStartPos.isChecked())
+        else if (centerStartPos.isChecked())
             matchDatabase.add(2,4);
-        else matchDatabase.add(-1,4);
+        else if (rightStartPos.isChecked())
+            matchDatabase.add(3,4);
+        else
+            matchDatabase.add(0,4);
 
         if(crossedAutoLine.isChecked())
             matchDatabase.add(1, 3);
@@ -254,20 +255,24 @@ public class AutoTab extends Fragment implements TabInterface {
     private void readScaleValue() {
         if(autoScaleScore == 1) {
             if(matchDatabase.getInt(8) == 1) {
+                autoScaleLeftPos.setChecked(false);
                 autoScaleRightPos.setChecked(true);
             }
             else autoScaleRightPos.setChecked(false);
             if(matchDatabase.getInt(7) == 1) {
+                autoScaleRightPos.setChecked(false);
                 autoScaleLeftPos.setChecked(true);
             }
             else autoScaleLeftPos.setChecked(false);
         }
         else if(autoScaleScore == 2) {
             if(matchDatabase.getInt(12) == 1) {
+                autoScaleLeftPos.setChecked(false);
                 autoScaleRightPos.setChecked(true);
             }
             else autoScaleRightPos.setChecked(false);
             if(matchDatabase.getInt(11) == 1) {
+                autoScaleRightPos.setChecked(false);
                 autoScaleLeftPos.setChecked(true);
             }
             else autoScaleLeftPos.setChecked(false);
@@ -305,20 +310,24 @@ public class AutoTab extends Fragment implements TabInterface {
     private void readSwitchValue() {
         if(autoSwitchScore == 1) {
             if(matchDatabase.getInt(6) == 1) {
+                autoSwitchLeftPos.setChecked(false);
                 autoSwitchRightPos.setChecked(true);
             }
             else autoSwitchRightPos.setChecked(false);
             if(matchDatabase.getInt(5) == 1) {
+                autoSwitchRightPos.setChecked(false);
                 autoSwitchLeftPos.setChecked(true);
             }
             else autoSwitchLeftPos.setChecked(false);
         }
         else if(autoSwitchScore == 2) {
             if(matchDatabase.getInt(10) == 1) {
+                autoSwitchLeftPos.setChecked(false);
                 autoSwitchRightPos.setChecked(true);
             }
             else autoSwitchRightPos.setChecked(false);
             if(matchDatabase.getInt(9) == 1) {
+                autoSwitchRightPos.setChecked(false);
                 autoSwitchLeftPos.setChecked(true);
             }
             else autoSwitchLeftPos.setChecked(false);
