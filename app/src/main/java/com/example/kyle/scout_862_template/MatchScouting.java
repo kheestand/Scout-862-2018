@@ -22,12 +22,11 @@ import com.example.kyle.scout_862_template.EventCards.RecycleListAdapter;
 import com.example.kyle.scout_862_template.Scout862.MatchDatabase;
 import com.example.kyle.scout_862_template.Scout862.PictureHandler;
 import com.example.kyle.scout_862_template.Tabs.ViewPagerAdapter;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,7 +83,7 @@ public class MatchScouting extends AppCompatActivity {
         try {
             matchDatabase.importMatchSheet(true);
             fetcher.makeCache();
-        } catch (IOException | ParseException | InvalidFormatException e) {
+        } catch (IOException | InvalidFormatException e) {
             e.printStackTrace();
         }
 
@@ -226,7 +225,7 @@ public class MatchScouting extends AppCompatActivity {
             robotThumbnail.setImageBitmap(pictureFromDatabase);
             robotPicture.setImageBitmap(pictureFromDatabase);
 
-            JSONObject foundTeam = fetcher.getTeamObject(teamStr);
+            JsonObject foundTeam = fetcher.getTeamObject(teamStr);
 
             if (foundTeam == null)
                 return;
@@ -236,17 +235,17 @@ public class MatchScouting extends AppCompatActivity {
             longTeamName.setMarkdownText(teamNicknameFromFile);
             teamLocation.setMarkdownText(teamLocationFromFile);
             makeMatchCards(teamStr);
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void makeMatchCards(String team) {
         List<ListClass> matchCards = new ArrayList<>();
-        JSONArray eventsCompeted = null;
+        JsonArray eventsCompeted = null;
         try {
             eventsCompeted = fetcher.getRobotEventKeys(team);
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -257,10 +256,10 @@ public class MatchScouting extends AppCompatActivity {
                 String currentEvent = eventsCompeted.get(index).toString();
                 if (currentEvent.contains(Constants.year)) {
                     try {
-                        JSONObject simpleEvent = fetcher.getSimpleEventFromCache(currentEvent);
-                        JSONObject teamEventObj = fetcher.getRobotEventObjectFromCache(team, currentEvent);
+                        JsonObject simpleEvent = fetcher.getSimpleEventFromCache(currentEvent);
+                        JsonObject teamEventObj = fetcher.getRobotEventObjectFromCache(team, currentEvent);
                         matchCards.add(new ListClass(simpleEvent, teamEventObj, null));
-                    } catch (IOException | ParseException e) {
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }

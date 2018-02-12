@@ -1,7 +1,7 @@
 package com.example.kyle.scout_862_template.BlueAllianceData.BinarySearchTree;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.io.File;
 
@@ -13,16 +13,16 @@ public class BinarySearchTree {
 
     public Node root;
 
-    public Node JSONArrayToBST(JSONArray objects, int start, int end) {
+    public Node JsonArrayToBST(JsonArray objects, int start, int end) {
         if (start > end)
             return null;
 
         int mid = ((start + end) / 2);
 
-        Node node = new Node((JSONObject) objects.get(mid));
-        node.key = ((JSONObject) objects.get(mid)).get("key").toString();
-        node.leftNode = JSONArrayToBST(objects, start, mid - 1);
-        node.rightNode = JSONArrayToBST(objects, mid + 1, end);
+        Node node = new Node(objects.get(mid));
+        node.key = ((JsonObject) objects.get(mid)).get("key").toString();
+        node.leftNode = JsonArrayToBST(objects, start, mid - 1);
+        node.rightNode = JsonArrayToBST(objects, mid + 1, end);
         return node;
     }
 

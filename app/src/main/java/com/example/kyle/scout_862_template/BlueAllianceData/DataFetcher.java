@@ -2,11 +2,9 @@ package com.example.kyle.scout_862_template.BlueAllianceData;
 
 import com.example.kyle.scout_862_template.BlueAllianceData.BinarySearchTree.BinarySearchTree;
 import com.example.kyle.scout_862_template.Constants;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -29,9 +27,9 @@ public class DataFetcher {
     BinarySearchTree robotFileCache = new BinarySearchTree();
     private OkHttpClient client = new OkHttpClient();
 
-    private static JSONObject searchTeam(int team, JSONArray data) {
+    private static JsonObject searchTeam(int team, JsonArray data) {
         for (int index = 0; index < data.size(); index++) {
-            JSONObject objectAtIndex = (JSONObject) data.get(index);
+            JsonObject objectAtIndex = (JsonObject) data.get(index);
             if (objectAtIndex.get("key").equals("frc" + team))
                 return objectAtIndex;
         }
@@ -48,11 +46,11 @@ public class DataFetcher {
         return response.body().string();
     }
 
-    public void makeCache() throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
+    public void makeCache() throws IOException {
+        JsonParser parser = new JsonParser();
         Reader reader = new FileReader(Constants.blueAlliancePath + "event_list_" + Constants.year + FILE_EXTENSION);
-        JSONArray eventKeys = (JSONArray) parser.parse(reader);
-        eventKeyCache.root = eventKeyCache.JSONArrayToBST(eventKeys, 0, eventKeys.size() - 1);
+        JsonArray eventKeys = (JsonArray) parser.parse(reader);
+        eventKeyCache.root = eventKeyCache.JsonArrayToBST(eventKeys, 0, eventKeys.size() - 1);
 
         FileFilter directoryFileFilter = new FileFilter() {
             public boolean accept(File file) {
@@ -128,68 +126,68 @@ public class DataFetcher {
         return ERROR_CODE;
     }
 
-    public JSONObject getSimpleEventObject(String eventKey) throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
+    public JsonObject getSimpleEventObject(String eventKey) throws IOException {
+        JsonParser parser = new JsonParser();
         Reader reader = new FileReader(Constants.blueAlliancePath + "event_list_" + Constants.year + FILE_EXTENSION);
-        JSONArray jsonArray = (JSONArray) parser.parse(reader);
-        for (int index = 0; index < jsonArray.size(); index++) {
-            JSONObject currentEvent = (JSONObject) jsonArray.get(index);
-            String currentEventKey = (String) currentEvent.get("event_code");
+        JsonArray JsonArray = (JsonArray) parser.parse(reader);
+        for (int index = 0; index < JsonArray.size(); index++) {
+            JsonObject currentEvent = (JsonObject) JsonArray.get(index);
+            String currentEventKey = currentEvent.get("event_code").toString();
             if (eventKey.contains(currentEventKey))
                 return currentEvent;
         }
         return null;
     }
 
-    public JSONObject getSimpleEventFromCache(String eventKey) {
-        return (JSONObject) eventKeyCache.search(eventKey);
+    public JsonObject getSimpleEventFromCache(String eventKey) {
+        return (JsonObject) eventKeyCache.search(eventKey);
     }
 
-    public JSONObject getTeamObject(String team) throws IOException, ParseException {
+    public JsonObject getTeamObject(String team) throws IOException {
         return getTeamObject(Integer.parseInt(team));
     }
 
-    public JSONObject getTeamObject(int team) throws IOException, ParseException {
+    public JsonObject getTeamObject(int team) throws IOException {
         int pageNumber = team / 500;
-        JSONParser parser = new JSONParser();
+        JsonParser parser = new JsonParser();
         Reader reader = new FileReader(Constants.blueAlliancePath + "team_list_page_" + pageNumber + FILE_EXTENSION);
         Object jsonObj = parser.parse(reader);
-        JSONArray teamData = (JSONArray) jsonObj;
+        JsonArray teamData = (JsonArray) jsonObj;
         return searchTeam(team, teamData);
     }
 
-    public JSONObject getRobotEventObject(String team, String eventKey) throws IOException, ParseException {
+    public JsonObject getRobotEventObject(String team, String eventKey) throws IOException {
         return getRobotEventObject(Integer.parseInt(team), eventKey);
     }
 
-    public JSONObject getRobotEventObject(int team, String eventKey) throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
+    public JsonObject getRobotEventObject(int team, String eventKey) throws IOException {
+        JsonParser parser = new JsonParser();
         Reader reader = new FileReader(Constants.blueAlliancePath + "/" + team + "/" + "status_" + eventKey + FILE_EXTENSION);
         Object jsonObj = parser.parse(reader);
-        return (JSONObject) jsonObj;
+        return (JsonObject) jsonObj;
     }
 
-    public JSONArray getRobotEventKeys(String team) throws IOException, ParseException {
+    public JsonArray getRobotEventKeys(String team) throws IOException {
         return getRobotEventKeys(Integer.parseInt(team));
     }
 
-    public JSONArray getRobotEventKeys(int team) throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
+    public JsonArray getRobotEventKeys(int team) throws IOException {
+        JsonParser parser = new JsonParser();
         Reader reader = new FileReader(Constants.blueAlliancePath + "/" + team + "/" + "event_keys" + FILE_EXTENSION);
         Object jsonObj = parser.parse(reader);
-        return (JSONArray) jsonObj;
+        return (JsonArray) jsonObj;
     }
 
-    public JSONObject getRobotEventObjectFromCache(String team, String currentEvent) throws IOException, ParseException {
+    public JsonObject getRobotEventObjectFromCache(String team, String currentEvent) throws IOException {
         return getRobotEventObjectFromCache(Integer.parseInt(team), currentEvent);
     }
 
-    public JSONObject getRobotEventObjectFromCache(int team, String currentEvent) throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
+    public JsonObject getRobotEventObjectFromCache(int team, String currentEvent) throws IOException {
+        JsonParser parser = new JsonParser();
         File[] files = (File[]) robotFileCache.search(team);
         Reader reader = new FileReader(findFile(files, currentEvent));
         Object jsonObj = parser.parse(reader);
-        return (JSONObject) jsonObj;
+        return (JsonObject) jsonObj;
     }
 
     private File findFile(File[] fileArray, String key) {

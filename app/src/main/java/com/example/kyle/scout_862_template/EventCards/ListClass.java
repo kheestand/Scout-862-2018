@@ -1,6 +1,10 @@
 package com.example.kyle.scout_862_template.EventCards;
 
-import org.json.simple.JSONObject;
+
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by kyle on 9/7/17.
@@ -12,7 +16,7 @@ public class ListClass {
     String eventCode;
     String status;
 
-    public ListClass(JSONObject simpleEventObj, JSONObject teamEventObj, JSONObject teamAwardObj) {
+    public ListClass(JsonObject simpleEventObj, JsonObject teamEventObj, JSONObject teamAwardObj) {
 
         if (simpleEventObj == null)
             return;
