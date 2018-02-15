@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/end_Game_Capabilities"
@@ -22,18 +23,11 @@
             android:layout_height="234dp">
 
             <RadioButton
-                android:id="@+id/supports_Two_Ramp"
+                android:id="@+id/climbs_On_Ramp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rampbot Supports Two Robots" />
-
-            <RadioButton
-                android:id="@+id/supports_Two_Rung"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rungbot Supports Two Robots" />
+                android:text="Climbs on another Ramp Bot" />
 
             <RadioButton
                 android:id="@+id/supports_One_Ramp"
@@ -43,18 +37,11 @@
                 android:text="Rampbot Supports One Robot" />
 
             <RadioButton
-                android:id="@+id/supports_One_Rung"
+                android:id="@+id/supports_Two_Ramp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rungbot Supports One Robot" />
-
-            <RadioButton
-                android:id="@+id/climbs_On_Ramp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Climbs on another Ramp Bot" />
+                android:text="Rampbot Supports Two Robots" />
 
             <RadioButton
                 android:id="@+id/climbs_On_Field_Rung"
@@ -71,6 +58,20 @@
                 android:text="Climbs on another Robot's Rung" />
 
             <RadioButton
+                android:id="@+id/supports_One_Rung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rungbot Supports One Robot" />
+
+            <RadioButton
+                android:id="@+id/supports_Two_Rung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rungbot Supports Two Robots" />
+
+            <RadioButton
                 android:id="@+id/robot_Parks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,6 +79,14 @@
                 android:text="Robot Parks" />
 
         </RadioGroup>
+
+        <EditText
+            android:id="@+id/endGameComment Box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Comments...?"
+            android:inputType="textMultiLine" />
     </LinearLayout>
 
 </RelativeLayout>

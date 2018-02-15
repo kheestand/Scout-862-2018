@@ -5,178 +5,257 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TableLayout
-        android:id="@+id/tele_Buttons"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/interactive_field_picture_container">
+    <com.beardedhen.androidbootstrap.BootstrapWell
+        android:layout_width="250dp"
+        android:layout_height="100dp">
 
-        <TableRow
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/tele_Exchange_Label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Exchange" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_below="@+id/tele_Exchange_Label">
 
-                <Button
-                    android:id="@+id/tele_Switch_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   -1   " />
-
-                <TextView
-                    android:id="@+id/tele_Switch_Value_Counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="0" />
-
-                <Button
-                    android:id="@+id/tele_Switch_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   +1   " />
-
-                <TextView
-                    android:id="@+id/tele_Switch_Label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tele Switch       " />
-
-            </LinearLayout>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/tele_Scale_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   -1   " />
-
-                <TextView
-                    android:id="@+id/tele_Scale_Value_Counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="0" />
-
-                <Button
-                    android:id="@+id/tele_Scale_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   +1   " />
-
-                <TextView
-                    android:id="@+id/tele_Scale_Label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tele Scale          " />
-
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/tele_Opp_Switch_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   -1   " />
-
-                <TextView
-                    android:id="@+id/tele_Opp_Switch_Value_Counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="0" />
-
-                <Button
-                    android:id="@+id/tele_Opp_Switch_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   +1   " />
-
-                <TextView
-                    android:id="@+id/tele_Opp_Switch_Label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Opp Switch       " />
-
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
+                <com.beardedhen.androidbootstrap.BootstrapButton
                     android:id="@+id/tele_Exchange_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   -1   " />
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:text="-1"
+                    app:bootstrapBrand="danger"
+                    app:showOutline="true" />
 
-                <TextView
+                <com.beardedhen.androidbootstrap.AwesomeTextView
                     android:id="@+id/exchange_Value_Counter"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical|center_horizontal"
+                    android:textSize="30sp"
                     android:text="0" />
 
-                <Button
+                <com.beardedhen.androidbootstrap.BootstrapButton
                     android:id="@+id/tele_Exchange_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   +1   " />
-
-                <TextView
-                    android:id="@+id/tele_Exchange_Label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Exchange          " />
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    app:bootstrapBrand="success"
+                    app:showOutline="true"
+                    android:text="+1" />
 
             </LinearLayout>
-        </TableRow>
 
-    </TableLayout>
+        </RelativeLayout>
+
+    </com.beardedhen.androidbootstrap.BootstrapWell>
+
+    <com.beardedhen.androidbootstrap.BootstrapWell
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/tele_Opp_Switch_Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Opp Switch" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tele_Opp_Switch_Label">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/tele_Opp_Switch_Subtract"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    app:bootstrapBrand="danger"
+                    app:showOutline="true"
+                    android:text="-1" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/tele_Opp_Switch_Value_Counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.99"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="30sp"
+                    android:text="0" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/tele_Opp_Switch_Add"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    app:bootstrapBrand="success"
+                    app:showOutline="true"
+                    android:text="+1" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.beardedhen.androidbootstrap.BootstrapWell>
+
+    <com.beardedhen.androidbootstrap.BootstrapWell
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/bootstrapWell3"
+        android:layout_alignParentRight="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/tele_Scale_Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tele Scale" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tele_Scale_Label">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/tele_Scale_Subtract"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    app:bootstrapBrand="danger"
+                    app:showOutline="true"
+                    android:text="-1" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/tele_Scale_Value_Counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="30sp"
+                    android:text="0" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/tele_Scale_Add"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    app:bootstrapBrand="success"
+                    app:showOutline="true"
+                    android:text="+1" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.beardedhen.androidbootstrap.BootstrapWell>
+
+    <com.beardedhen.androidbootstrap.BootstrapWell
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="188dp"
+        android:elevation="2dp"
+        app:bootstrapSize="sm"
+        android:id="@+id/bootstrapWell3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.beardedhen.androidbootstrap.BootstrapLabel
+                android:id="@+id/tele_Switch_Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Tele Switch" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@+id/tele_Switch_Label">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/tele_Switch_Subtract"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:text="-1"
+                    app:bootstrapBrand="danger"
+                    app:showOutline="true" />
+
+                <com.beardedhen.androidbootstrap.AwesomeTextView
+                    android:id="@+id/tele_Switch_Value_Counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.76"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="30sp" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/tele_Switch_Add"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"
+                    android:text="+1"
+                    app:bootstrapBrand="success"
+                    app:showOutline="true" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.beardedhen.androidbootstrap.BootstrapWell>
+
+
 </RelativeLayout>

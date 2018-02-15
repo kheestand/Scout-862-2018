@@ -151,7 +151,7 @@ public class TeleopTab extends Fragment implements TabInterface {
     public void subtractFromTeleExchange() {
         if (teleExchangeScore > 0) {
             teleExchangeScore = teleExchangeScore - 1;
-            teleExchangeLabel.setText(String.valueOf(teleExchangeScore));
+            teleExchangeCounter.setText(String.valueOf(teleExchangeScore));
 
         }
     }

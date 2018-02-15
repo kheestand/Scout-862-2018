@@ -12,10 +12,6 @@ android {
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
-    dexOptions {
-        incremental true
-        javaMaxHeapSize "4g"
-    }
     buildTypes {
         release {
             minifyEnabled false
@@ -56,5 +52,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'commons-net:commons-net:3.3'
+    // NOTE: For capability reasons, DO NOT include the POI Libraries in Gradle.
+    // The result of doing so will pull in the xmlbeans dependency and will not
+    // work with android versions below API 21 (5.0)
 
 }

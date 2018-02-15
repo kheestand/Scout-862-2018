@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.example.kyle.scout_862_template.MatchScouting;
 import com.example.kyle.scout_862_template.R;
 import com.example.kyle.scout_862_template.Scout862.MatchDatabase;
@@ -42,14 +43,14 @@ public class AutoTab extends Fragment implements TabInterface {
     @BindView(R.id.auto_Scale_Subtract)
     Button autoScaleSubtract;
     @BindView(R.id.auto_Scale_Value_Counter)
-    TextView autoScaleValueCounter;
+    BootstrapLabel autoScaleValueCounter;
     int autoScaleScore = 1;
     @BindView(R.id.auto_Switch_Add)
     Button autoSwitchAdd;
     @BindView(R.id.auto_Switch_Subtract)
     Button autoSwitchSubtract;
     @BindView(R.id.auto_Switch_Value_Counter)
-    TextView autoSwitchValueCounter;
+    BootstrapLabel autoSwitchValueCounter;
     @BindView(R.id.autoline_cross_bool)
     CheckBox crossedAutoLine;
     int autoSwitchScore = 1;

@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#11111111"
     android:orientation="vertical">
+
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/scouterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Enter Name"
+        android:inputType="textMultiLine" />
 
     <FrameLayout
         android:id="@+id/interactive_field_picture_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scouterName"
+        android:layout_alignParentLeft="true">
 
         <ImageView
             android:id="@+id/interactive_field_picture"
@@ -23,19 +39,24 @@
         android:id="@+id/auto_Buttons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/interactive_field_picture_container">
+        android:layout_below="@+id/interactive_field_picture_container"
+        android:layout_alignParentLeft="true">
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-            <Button
+            <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/interactive_field_rotate_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Flip Field" />
+                android:layout_gravity=""
+                android:text="Flip Field"
+                app:roundedCorners="true" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </TableRow>
 
@@ -71,10 +92,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.beardedhen.androidbootstrap.BootstrapLabel
                 android:id="@+id/pov_Disclaimer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:bootstrapBrand="warning"
                 android:text="(DISCLAIMER) SELECT ALL VALUES FROM DRIVER POV" />
         </TableRow>
 
@@ -87,34 +109,55 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/auto_Switch_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   -1   " />
-
-                <TextView
-                    android:id="@+id/auto_Switch_Value_Counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="0" />
-
-                <Button
-                    android:id="@+id/auto_Switch_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   +1   " />
-
-                <TextView
+                <com.beardedhen.androidbootstrap.BootstrapLabel
                     android:id="@+id/auto_Switch_Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Auto Switch" />
+                    android:gravity="center"
+                    android:text="Auto Switch"
+                    android:layout_marginRight="10dp"
+                    app:bootstrapBrand="info" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/auto_Switch_Subtract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:showOutline="true"
+                    app:bootstrapBrand="danger"
+                    android:text="-1" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.beardedhen.androidbootstrap.BootstrapLabel
+                    android:id="@+id/auto_Switch_Value_Counter"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="0" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/auto_Switch_Add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:showOutline="true"
+                    app:bootstrapBrand="success"
+                    android:text="+1" />
+
+                <Space
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content" />
 
                 <CheckBox
                     android:id="@+id/auto_Switch_LeftPos"
@@ -143,34 +186,56 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/auto_Scale_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="   -1   " />
-
-                <TextView
-                    android:id="@+id/auto_Scale_Value_Counter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="0" />
-
-                <Button
-                    android:id="@+id/auto_Scale_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+1" />
-
-                <TextView
+                <com.beardedhen.androidbootstrap.BootstrapLabel
                     android:id="@+id/auto_Scale_Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Auto Scale   " />
+                    android:text=" Auto Scale "
+                    app:bootstrapBrand="info"
+                    android:layout_marginRight="11dp"
+                    app:showOutline="true" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/auto_Scale_Subtract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:showOutline="true"
+                    app:bootstrapBrand="danger"
+                    android:text="-1" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.beardedhen.androidbootstrap.BootstrapLabel
+                    android:id="@+id/auto_Scale_Value_Counter"
+                    android:layout_width="45dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.29"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="0" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/auto_Scale_Add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:showOutline="true"
+                    app:bootstrapBrand="success"
+                    android:text="+1" />
+
+                <Space
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <CheckBox
                     android:id="@+id/auto_Scale_LeftPos"
@@ -198,6 +263,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Crossed Auto-Line" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
         </TableRow>
     </TableLayout>
