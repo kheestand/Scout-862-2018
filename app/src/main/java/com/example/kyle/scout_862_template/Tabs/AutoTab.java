@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.example.kyle.scout_862_template.MatchScouting;
 import com.example.kyle.scout_862_template.R;
@@ -31,7 +32,7 @@ public class AutoTab extends Fragment implements TabInterface {
     @BindView(R.id.interactive_field_picture_container)
     FrameLayout fieldContainer;
     @BindView(R.id.interactive_field_rotate_button)
-    Button rotateFieldButton;
+    BootstrapButton rotateFieldButton;
     @BindView(R.id.left_Start_Position)
     CheckBox leftStartPos;
     @BindView(R.id.middle_Start_Position)
@@ -39,16 +40,16 @@ public class AutoTab extends Fragment implements TabInterface {
     @BindView(R.id.right_Start_Position)
     CheckBox rightStartPos;
     @BindView(R.id.auto_Scale_Add)
-    Button autoScaleAdd;
+    BootstrapButton autoScaleAdd;
     @BindView(R.id.auto_Scale_Subtract)
-    Button autoScaleSubtract;
+    BootstrapButton autoScaleSubtract;
     @BindView(R.id.auto_Scale_Value_Counter)
     BootstrapLabel autoScaleValueCounter;
     int autoScaleScore = 1;
     @BindView(R.id.auto_Switch_Add)
-    Button autoSwitchAdd;
+    BootstrapButton autoSwitchAdd;
     @BindView(R.id.auto_Switch_Subtract)
-    Button autoSwitchSubtract;
+    BootstrapButton autoSwitchSubtract;
     @BindView(R.id.auto_Switch_Value_Counter)
     BootstrapLabel autoSwitchValueCounter;
     @BindView(R.id.autoline_cross_bool)

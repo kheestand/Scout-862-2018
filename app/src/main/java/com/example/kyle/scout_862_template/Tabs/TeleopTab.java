@@ -11,6 +11,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.AwesomeTextView;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.example.kyle.scout_862_template.MatchScouting;
 import com.example.kyle.scout_862_template.R;
@@ -30,31 +31,29 @@ import butterknife.OnClick;
 public class TeleopTab extends Fragment implements TabInterface {
     MatchDatabase matchDatabase = MatchScouting.matchDatabase;
     @BindView(R.id.tele_Switch_Add)
-    Button teleSwitchAdd;
+    BootstrapButton teleSwitchAdd;
     @BindView(R.id.tele_Switch_Subtract)
-    Button teleSwitchSubtract;
+    BootstrapButton teleSwitchSubtract;
     @BindView(R.id.tele_Switch_Value_Counter)
-    TextView teleSwitchValueCounter;
+    AwesomeTextView teleSwitchValueCounter;
     @BindView(R.id.tele_Scale_Add)
-    Button teleScaleAdd;
+    BootstrapButton teleScaleAdd;
     @BindView(R.id.tele_Scale_Subtract)
-    Button teleScaleSubtract;
+    BootstrapButton teleScaleSubtract;
     @BindView(R.id.tele_Scale_Value_Counter)
-    TextView teleScaleValueCounter;
+    AwesomeTextView teleScaleValueCounter;
     @BindView(R.id.tele_Opp_Switch_Add)
-    Button teleOppSwitchAdd;
+    BootstrapButton teleOppSwitchAdd;
     @BindView(R.id.tele_Opp_Switch_Subtract)
-    Button teleOppSwitchSubtract;
+    BootstrapButton teleOppSwitchSubtract;
     @BindView(R.id.tele_Opp_Switch_Value_Counter)
-    TextView teleOppSwitchValueCounter;
+    AwesomeTextView teleOppSwitchValueCounter;
     @BindView(R.id.tele_Exchange_Add)
-    Button teleExchangeAdd;
+    BootstrapButton teleExchangeAdd;
     @BindView(R.id.tele_Exchange_Subtract)
-    Button teleExchangeSubtract;
-    @BindView(R.id.tele_Exchange_Label)
-    TextView teleExchangeLabel;
+    public BootstrapButton teleExchangeSubtract;
     @BindView(R.id.exchange_Value_Counter)
-    TextView teleExchangeCounter;
+    AwesomeTextView teleExchangeCounter;
     int teleSwitchScore = 0;
     int teleScaleScore = 0;
     int teleExchangeScore = 0;

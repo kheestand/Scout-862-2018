@@ -81,7 +81,7 @@
         </RadioGroup>
 
         <EditText
-            android:id="@+id/endGameComment Box"
+            android:id="@+id/endGameCommentBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

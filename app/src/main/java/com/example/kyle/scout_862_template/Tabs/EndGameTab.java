@@ -26,6 +26,8 @@ public class EndGameTab extends Fragment implements TabInterface {
     MatchDatabase matchDatabase = MatchScouting.matchDatabase;
     @BindView(R.id.robotEndGameButtons)
     RadioGroup robotEndGameButtons;
+    @BindView(R.id.endGameCommentBox)
+    EditText commentsBox;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class EndGameTab extends Fragment implements TabInterface {
             robotEndGameButtons.check(R.id.robot_Parks);
         else
             robotEndGameButtons.clearCheck();
+        commentsBox.setText(matchDatabase.get(25));
     }
 
     @Override
@@ -95,6 +98,7 @@ public class EndGameTab extends Fragment implements TabInterface {
                 matchDatabase.add(0,23);
                 matchDatabase.add(0,24);
         }
+        matchDatabase.add(commentsBox.getText().toString(), 25);
     }
 
 }
