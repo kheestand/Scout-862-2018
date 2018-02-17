@@ -159,6 +159,7 @@ public class AutoTab extends Fragment implements TabInterface {
         writeSwitchValue();
         if (autoSwitchScore < 2) {
             autoSwitchScore = autoSwitchScore + 1;
+            autoScaleScore = autoScaleScore + 1;
             autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
         }
         readSwitchValue();
@@ -169,6 +170,7 @@ public class AutoTab extends Fragment implements TabInterface {
         writeSwitchValue();
         if (autoSwitchScore > 1) {
             autoSwitchScore = autoSwitchScore - 1;
+            autoScaleScore = autoScaleScore - 1;
             autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
         }
         readSwitchValue();
@@ -179,6 +181,7 @@ public class AutoTab extends Fragment implements TabInterface {
         writeScaleValue();
         if (autoScaleScore < 2) {
             autoScaleScore = autoScaleScore + 1;
+            autoSwitchScore = autoSwitchScore + 1;
             autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
         }
         readScaleValue();
@@ -189,6 +192,7 @@ public class AutoTab extends Fragment implements TabInterface {
         writeScaleValue();
         if (autoScaleScore > 1) {
             autoScaleScore = autoScaleScore - 1;
+            autoSwitchScore = autoSwitchScore - 1;
             autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
         }
         readScaleValue();

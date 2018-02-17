@@ -170,7 +170,7 @@
                     android:id="@+id/auto_Switch_RightPos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="170.40"
                     android:text="Right" />
 
             </LinearLayout>
