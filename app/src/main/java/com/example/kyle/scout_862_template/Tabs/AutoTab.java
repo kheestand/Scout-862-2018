@@ -16,11 +16,14 @@ import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.example.kyle.scout_862_template.MatchScouting;
 import com.example.kyle.scout_862_template.R;
 import com.example.kyle.scout_862_template.Scout862.MatchDatabase;
+import com.tooltip.Tooltip;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
+import es.dmoral.toasty.Toasty;
 
 /**
  * Created by kyle on 6/3/17.
@@ -29,16 +32,22 @@ import butterknife.OnClick;
 public class AutoTab extends Fragment implements TabInterface {
     MatchDatabase matchDatabase = MatchScouting.matchDatabase;
 
-    @BindView(R.id.interactive_field_picture_container)
-    FrameLayout fieldContainer;
+    @BindView(R.id.blue_left_button)
+    BootstrapButton blueStartLeft;
+    @BindView(R.id.blue_center_button)
+    BootstrapButton blueStartCenter;
+    @BindView(R.id.blue_right_button)
+    BootstrapButton blueStartRight;
+    @BindView(R.id.red_left_button)
+    BootstrapButton redStartLeft;
+    @BindView(R.id.red_center_button)
+    BootstrapButton redStartCenter;
+    @BindView(R.id.red_right_button)
+    BootstrapButton redStartRight;
+    @BindView(R.id.interactive_field_rel)
+    RelativeLayout fieldContainer;
     @BindView(R.id.interactive_field_rotate_button)
     BootstrapButton rotateFieldButton;
-    @BindView(R.id.left_Start_Position)
-    CheckBox leftStartPos;
-    @BindView(R.id.middle_Start_Position)
-    CheckBox centerStartPos;
-    @BindView(R.id.right_Start_Position)
-    CheckBox rightStartPos;
     @BindView(R.id.auto_Scale_Add)
     BootstrapButton autoScaleAdd;
     @BindView(R.id.auto_Scale_Subtract)
@@ -88,27 +97,6 @@ public class AutoTab extends Fragment implements TabInterface {
 
     @Override
     public void readTab() {
-        switch (matchDatabase.getInt(4)){
-            case 1:
-                leftStartPos.setChecked(true);
-                centerStartPos.setChecked(false);
-                rightStartPos.setChecked(false);
-                break;
-            case 2:
-                leftStartPos.setChecked(false);
-                centerStartPos.setChecked(true);
-                rightStartPos.setChecked(false);
-                break;
-            case 3:
-                leftStartPos.setChecked(false);
-                centerStartPos.setChecked(false);
-                rightStartPos.setChecked(true);
-                break;
-            default:
-                leftStartPos.setChecked(false);
-                centerStartPos.setChecked(false);
-                rightStartPos.setChecked(false);
-        }
 
         switch (matchDatabase.getInt(3)){
             case 0: crossedAutoLine.setChecked(false);
@@ -124,14 +112,6 @@ public class AutoTab extends Fragment implements TabInterface {
 
     @Override
     public void writeTab() {
-        if(leftStartPos.isChecked())
-            matchDatabase.add(1,4);
-        else if (centerStartPos.isChecked())
-            matchDatabase.add(2,4);
-        else if (rightStartPos.isChecked())
-            matchDatabase.add(3,4);
-        else
-            matchDatabase.add(0,4);
 
         if(crossedAutoLine.isChecked())
             matchDatabase.add(1, 3);
@@ -148,10 +128,24 @@ public class AutoTab extends Fragment implements TabInterface {
 
     @OnClick(R.id.interactive_field_rotate_button)
     public void flipField() {
-        if (fieldContainer.getRotation() == 180)
+        if (fieldContainer.getRotation() == 180) {
             fieldContainer.setRotation(0);
-        else
+            blueStartCenter.setRotation(0);
+            blueStartLeft.setRotation(0);
+            blueStartRight.setRotation(0);
+            redStartCenter.setRotation(0);
+            redStartLeft.setRotation(0);
+            redStartRight.setRotation(0);
+
+        } else {
             fieldContainer.setRotation(180);
+            blueStartCenter.setRotation(180);
+            blueStartLeft.setRotation(180);
+            blueStartRight.setRotation(180);
+            redStartCenter.setRotation(180);
+            redStartLeft.setRotation(180);
+            redStartRight.setRotation(180);
+        }
     }
 
     @OnClick(R.id.auto_Switch_Add)
@@ -161,6 +155,7 @@ public class AutoTab extends Fragment implements TabInterface {
             autoSwitchScore = autoSwitchScore + 1;
             autoScaleScore = autoScaleScore + 1;
             autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
+            autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
         }
         readSwitchValue();
     }
@@ -168,10 +163,11 @@ public class AutoTab extends Fragment implements TabInterface {
     @OnClick(R.id.auto_Switch_Subtract)
     public void subtractFromAutoSwitch() {
         writeSwitchValue();
-        if (autoSwitchScore > 1) {
+        if (autoSwitchScore > 0) {
             autoSwitchScore = autoSwitchScore - 1;
             autoScaleScore = autoScaleScore - 1;
             autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
+            autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
         }
         readSwitchValue();
     }
@@ -183,6 +179,7 @@ public class AutoTab extends Fragment implements TabInterface {
             autoScaleScore = autoScaleScore + 1;
             autoSwitchScore = autoSwitchScore + 1;
             autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
+            autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
         }
         readScaleValue();
     }
@@ -190,12 +187,65 @@ public class AutoTab extends Fragment implements TabInterface {
     @OnClick(R.id.auto_Scale_Subtract)
     public void subtractFromAutoScale() {
         writeScaleValue();
-        if (autoScaleScore > 1) {
+        if (autoScaleScore > 0) {
             autoScaleScore = autoScaleScore - 1;
             autoSwitchScore = autoSwitchScore - 1;
             autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
+            autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
         }
         readScaleValue();
+    }
+
+    @OnClick(R.id.blue_right_button)
+    public void blueRightPress() {
+        matchDatabase.add(1,4);
+        Toasty.success(this.getContext(), "Starting Position: Blue Right").show();
+    }
+    @OnClick(R.id.blue_center_button)
+    public void blueCenterPress() {
+        matchDatabase.add(2,4);
+        Toasty.success(this.getContext(), "Starting Position: Blue Center").show();
+    }
+    @OnClick(R.id.blue_left_button)
+    public void blueleftPress() {
+        matchDatabase.add(3,4);
+        Toasty.success(this.getContext(), "Starting Position: Blue Left").show();
+    }
+    @OnClick(R.id.red_right_button)
+    public void redRightPress() {
+        matchDatabase.add(1,4);
+        Toasty.success(this.getContext(), "Starting Position: Red Right").show();
+    }
+    @OnClick(R.id.red_center_button)
+    public void redCenterPress() {
+        matchDatabase.add(2,4);
+        Toasty.success(this.getContext(), "Starting Position: Red Center").show();
+    }
+    @OnClick(R.id.red_left_button)
+    public void redLeftPress() {
+        matchDatabase.add(3,4);
+        Toasty.success(this.getContext(), "Starting Position: Red Left").show();
+    }
+
+    /**
+     * Tooltips when longpress on label
+     */
+    @OnLongClick(R.id.auto_Scale_Label)
+    public void longpressScaleLabel() {
+        Tooltip tooltip = new Tooltip.Builder(autoScaleValueCounter)
+                .setText("Auto Scale is located in the center of the field")
+                .setCancelable(true)
+                .setDismissOnClick(true)
+                .show();
+
+    }
+    @OnLongClick(R.id.auto_Switch_Label)
+    public void longpressSwitchLabel() {
+        Tooltip tooltip = new Tooltip.Builder(autoSwitchValueCounter)
+                .setText("Auto Switches are located on the right and left side of the field")
+                .setCancelable(true)
+                .setDismissOnClick(true)
+                .show();
     }
 
     /**

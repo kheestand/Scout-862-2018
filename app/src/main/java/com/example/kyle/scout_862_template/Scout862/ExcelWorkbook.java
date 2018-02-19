@@ -56,7 +56,7 @@ public class ExcelWorkbook {
         } else {
             wb = new HSSFWorkbook();
             wb.createSheet();
-            FileOutputStream fileOut = new FileOutputStream(path + workbookName + extension);
+            FileOutputStream fileOut = new FileOutputStream(path + "/" + workbookName + extension);
             wb.write(fileOut);
             fileOut.close();
             currentSheet = wb.getSheetAt(0);
@@ -68,7 +68,7 @@ public class ExcelWorkbook {
      */
     public void openXSSFWorkbook() throws IOException, InvalidFormatException {
         extension = ".xlsx";
-        File file = new File(path + workbookName + extension);
+        File file = new File(path + "/" + workbookName + extension);
         if (file.exists()) {
             FileInputStream inputStream = new FileInputStream(file);
             wb = WorkbookFactory.create(inputStream);
@@ -76,7 +76,7 @@ public class ExcelWorkbook {
         } else {
             wb = new HSSFWorkbook();
             wb.createSheet();
-            FileOutputStream fileOut = new FileOutputStream(path + workbookName + extension);
+            FileOutputStream fileOut = new FileOutputStream(path + "/" + workbookName + extension);
             wb.write(fileOut);
             fileOut.close();
             currentSheet = wb.getSheetAt(0);

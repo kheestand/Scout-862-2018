@@ -17,12 +17,14 @@ import com.example.kyle.scout_862_template.MatchScouting;
 import com.example.kyle.scout_862_template.R;
 import com.example.kyle.scout_862_template.Scout862.CycleData;
 import com.example.kyle.scout_862_template.Scout862.MatchDatabase;
+import com.tooltip.Tooltip;
 
 import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 /**
  * Created by kyle on 6/3/17.
@@ -30,6 +32,10 @@ import butterknife.OnClick;
 
 public class TeleopTab extends Fragment implements TabInterface {
     MatchDatabase matchDatabase = MatchScouting.matchDatabase;
+    @BindView(R.id.tele_Exchange_Label)
+    BootstrapLabel exchangeLabel;
+    @BindView(R.id.tele_Opp_Switch_Label)
+    BootstrapLabel oppSwitchLabel;
     @BindView(R.id.tele_Switch_Add)
     BootstrapButton teleSwitchAdd;
     @BindView(R.id.tele_Switch_Subtract)
@@ -153,6 +159,24 @@ public class TeleopTab extends Fragment implements TabInterface {
             teleExchangeCounter.setText(String.valueOf(teleExchangeScore));
 
         }
+    }
+
+    @OnLongClick(R.id.tele_Exchange_Label)
+    public void longPressExchangeLabel() {
+        Tooltip tooltip = new Tooltip.Builder(exchangeLabel)
+                .setText("The Exchange is located in middle of the field on the Alliance Station wall")
+                .setCancelable(true)
+                .setDismissOnClick(true)
+                .show();
+    }
+
+    @OnClick(R.id.tele_Opp_Switch_Label)
+    public void longPressOppSwitchLabel() {
+        Tooltip tooltip = new Tooltip.Builder(exchangeLabel)
+                .setText("The opposite switch is the switch that is in the opposing Alliance's side of the field")
+                .setCancelable(true)
+                .setDismissOnClick(true)
+                .show();
     }
 
 }
