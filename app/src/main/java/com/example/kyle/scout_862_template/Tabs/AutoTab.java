@@ -228,9 +228,9 @@ public class AutoTab extends Fragment implements TabInterface {
     }
 
     /**
-     * Tooltips when longpress on label
+     * Tooltips when click on label
      */
-    @OnLongClick(R.id.auto_Scale_Label)
+    @OnClick(R.id.auto_Scale_Label)
     public void longpressScaleLabel() {
         Tooltip tooltip = new Tooltip.Builder(autoScaleValueCounter)
                 .setText("Auto Scale is located in the center of the field")
@@ -239,10 +239,11 @@ public class AutoTab extends Fragment implements TabInterface {
                 .show();
 
     }
-    @OnLongClick(R.id.auto_Switch_Label)
+    @OnClick(R.id.auto_Switch_Label)
     public void longpressSwitchLabel() {
         Tooltip tooltip = new Tooltip.Builder(autoSwitchValueCounter)
-                .setText("Auto Switches are located on the right and left side of the field")
+                .setText
+                        ("Auto Switches are located on the right and left side of the field")
                 .setCancelable(true)
                 .setDismissOnClick(true)
                 .show();

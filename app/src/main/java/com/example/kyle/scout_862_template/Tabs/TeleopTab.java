@@ -75,10 +75,14 @@ public class TeleopTab extends Fragment implements TabInterface {
 
     @Override
     public void readTab() {
-        teleSwitchValueCounter.setText(matchDatabase.get(13));
-        teleOppSwitchValueCounter.setText(matchDatabase.get(14));
-        teleScaleValueCounter.setText(matchDatabase.get(15));
-        teleExchangeCounter.setText(matchDatabase.get(16));
+        teleSwitchScore = matchDatabase.getInt(13);
+        teleOppSwitchScore = matchDatabase.getInt(14);
+        teleScaleScore = matchDatabase.getInt(15);
+        teleExchangeScore = matchDatabase.getInt(16);
+        teleSwitchValueCounter.setText(String.valueOf(teleScaleScore));
+        teleOppSwitchValueCounter.setText(String.valueOf(teleOppSwitchScore));
+        teleScaleValueCounter.setText(String.valueOf(teleScaleScore));
+        teleExchangeCounter.setText(String.valueOf(teleExchangeScore));
     }
 
     @Override
@@ -161,7 +165,7 @@ public class TeleopTab extends Fragment implements TabInterface {
         }
     }
 
-    @OnLongClick(R.id.tele_Exchange_Label)
+    @OnClick(R.id.tele_Exchange_Label)
     public void longPressExchangeLabel() {
         Tooltip tooltip = new Tooltip.Builder(exchangeLabel)
                 .setText("The Exchange is located in middle of the field on the Alliance Station wall")
@@ -172,7 +176,7 @@ public class TeleopTab extends Fragment implements TabInterface {
 
     @OnClick(R.id.tele_Opp_Switch_Label)
     public void longPressOppSwitchLabel() {
-        Tooltip tooltip = new Tooltip.Builder(exchangeLabel)
+        Tooltip tooltip = new Tooltip.Builder(oppSwitchLabel)
                 .setText("The opposite switch is the switch that is in the opposing Alliance's side of the field")
                 .setCancelable(true)
                 .setDismissOnClick(true)
