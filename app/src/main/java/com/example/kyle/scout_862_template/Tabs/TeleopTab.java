@@ -75,10 +75,10 @@ public class TeleopTab extends Fragment implements TabInterface {
 
     @Override
     public void readTab() {
-        teleSwitchScore = matchDatabase.getInt(13);
-        teleOppSwitchScore = matchDatabase.getInt(14);
-        teleScaleScore = matchDatabase.getInt(15);
-        teleExchangeScore = matchDatabase.getInt(16);
+        teleSwitchScore = matchDatabase.getInt(14);
+        teleOppSwitchScore = matchDatabase.getInt(15);
+        teleScaleScore = matchDatabase.getInt(16);
+        teleExchangeScore = matchDatabase.getInt(17);
         teleSwitchValueCounter.setText(String.valueOf(teleScaleScore));
         teleOppSwitchValueCounter.setText(String.valueOf(teleOppSwitchScore));
         teleScaleValueCounter.setText(String.valueOf(teleScaleScore));
@@ -87,10 +87,10 @@ public class TeleopTab extends Fragment implements TabInterface {
 
     @Override
     public void writeTab() {
-        matchDatabase.add(teleSwitchScore, 13);
-        matchDatabase.add(teleOppSwitchScore, 14);
-        matchDatabase.add(teleScaleScore, 15);
-        matchDatabase.add(teleExchangeScore, 16);
+        matchDatabase.add(teleSwitchScore, 14);
+        matchDatabase.add(teleOppSwitchScore, 15);
+        matchDatabase.add(teleScaleScore, 16);
+        matchDatabase.add(teleExchangeScore, 17);
     }
 
     @OnClick(R.id.tele_Switch_Add)

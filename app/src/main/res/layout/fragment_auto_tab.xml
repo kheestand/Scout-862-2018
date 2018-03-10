@@ -20,334 +20,199 @@
         android:hint="Enter Name"
         android:inputType="textMultiLine" />
 
-    <RelativeLayout
-        android:id="@+id/interactive_field_rel"
+    <FrameLayout
+        android:id="@+id/auto_field"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scouterName"
-        android:layout_alignParentLeft="true">
+        android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:id="@+id/interactive_field_picture_container"
+        <RelativeLayout
+            android:id="@+id/interactive_field_rel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true">
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/scouterName">
 
-            <ImageView
-                android:id="@+id/interactive_field_picture"
+            <FrameLayout
+                android:id="@+id/interactive_field_picture_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/field_2018" />
+                android:layout_alignParentLeft="true">
 
-        </FrameLayout>
+                <ImageView
+                    android:id="@+id/interactive_field_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/field_2018" />
 
-        <LinearLayout
-            android:id="@+id/field_pos_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/interactive_field_picture_container"
-            android:orientation="horizontal">
+            </FrameLayout>
 
             <RelativeLayout
-                android:id="@+id/red_layout"
-                android:layout_width="303dp"
-                android:layout_height="match_parent">
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/red_left_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:fontAwesomeIcon="fa_android"
-                    android:layout_marginTop="31dp"
-                    app:bootstrapBrand="danger"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="96dp" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/red_center_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:fontAwesomeIcon="fa_android"
-                    android:layout_centerVertical="true"
-                    android:layout_alignLeft="@+id/red_left_button"
-                    app:bootstrapBrand="danger"/>
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/red_right_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:fontAwesomeIcon="fa_android"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignLeft="@+id/red_center_button"
-                    android:layout_marginBottom="33dp"
-                    app:bootstrapBrand="danger"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/blue_layout"
+                android:id="@+id/auto_switches_scales"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/blue_right_button"
+                <CheckBox
+                    android:id="@+id/scale_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="285dp"
+                    android:layout_marginTop="154dp" />
+
+                <CheckBox
+                    android:id="@+id/scale_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="285dp"
+                    android:layout_marginTop="58dp" />
+
+                <CheckBox
+                    android:id="@+id/red_switch_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginTop="70dp" />
+
+                <CheckBox
+                    android:id="@+id/red_switch_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/red_switch_left"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="142dp" />
+
+                <CheckBox
+                    android:id="@+id/blue_switch_left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginRight="102dp"
-                    android:layout_marginTop="40dp"
-                    app:bootstrapBrand="info"
-                    app:fontAwesomeIcon="fa_android" />
+                    android:layout_marginRight="180dp"
+                    android:layout_marginTop="142dp" />
 
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/blue_left_button"
+                <CheckBox
+                    android:id="@+id/blue_switch_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/blue_center_button"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="34dp"
-                    app:bootstrapBrand="info"
-                    app:fontAwesomeIcon="fa_android" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/blue_center_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/blue_right_button"
-                    android:layout_centerVertical="true"
-                    app:bootstrapBrand="info"
-                    app:fontAwesomeIcon="fa_android" />
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="180dp"
+                    android:layout_marginTop="70dp" />
             </RelativeLayout>
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <TableLayout
-        android:id="@+id/auto_Buttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/interactive_field_rel">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/interactive_field_rotate_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity=""
-                android:text="Flip Field"
-                app:roundedCorners="true" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.beardedhen.androidbootstrap.BootstrapLabel
-                android:id="@+id/pov_Disclaimer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="(DISCLAIMER) SELECT ALL VALUES FROM DRIVER POV"
-                app:bootstrapBrand="warning" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/field_pos_overlay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/interactive_field_picture_container"
                 android:orientation="horizontal">
 
-                <com.beardedhen.androidbootstrap.BootstrapLabel
-                    android:id="@+id/auto_Switch_Label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Auto Switch"
-                    app:bootstrapBrand="info" />
+                <RelativeLayout
+                    android:id="@+id/red_layout"
+                    android:layout_width="303dp"
+                    android:layout_height="match_parent">
 
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/auto_Switch_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="-1"
-                    app:bootstrapBrand="danger"
-                    app:showOutline="true" />
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/red_left_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="96dp"
+                        android:layout_marginTop="31dp"
+                        app:bootstrapBrand="danger"
+                        app:fontAwesomeIcon="fa_android" />
 
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/red_center_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/red_left_button"
+                        android:layout_centerVertical="true"
+                        app:bootstrapBrand="danger"
+                        app:fontAwesomeIcon="fa_android" />
 
-                <com.beardedhen.androidbootstrap.BootstrapLabel
-                    android:id="@+id/auto_Switch_Value_Counter"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="0" />
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/red_right_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/red_center_button"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="33dp"
+                        app:bootstrapBrand="danger"
+                        app:fontAwesomeIcon="fa_android" />
 
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                </RelativeLayout>
 
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/auto_Switch_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+1"
-                    app:bootstrapBrand="success"
-                    app:showOutline="true" />
+                <RelativeLayout
+                    android:id="@+id/blue_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <Space
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content" />
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/blue_right_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="102dp"
+                        android:layout_marginTop="40dp"
+                        app:bootstrapBrand="info"
+                        app:fontAwesomeIcon="fa_android" />
 
-                <CheckBox
-                    android:id="@+id/auto_Switch_LeftPos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Left" />
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/blue_left_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/blue_center_button"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="34dp"
+                        app:bootstrapBrand="info"
+                        app:fontAwesomeIcon="fa_android" />
 
-                <CheckBox
-                    android:id="@+id/auto_Switch_RightPos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="170.40"
-                    android:text="Right" />
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/blue_center_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/blue_right_button"
+                        android:layout_centerVertical="true"
+                        app:bootstrapBrand="info"
+                        app:fontAwesomeIcon="fa_android" />
 
+                </RelativeLayout>
             </LinearLayout>
 
-        </TableRow>
+        </RelativeLayout>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <com.beardedhen.androidbootstrap.BootstrapLabel
-                    android:id="@+id/auto_Scale_Label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="11dp"
-                    android:layout_weight="1"
-                    android:text=" Auto Scale "
-                    app:bootstrapBrand="info"
-                    app:showOutline="true" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/auto_Scale_Subtract"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="-1"
-                    app:bootstrapBrand="danger"
-                    app:showOutline="true" />
-
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <com.beardedhen.androidbootstrap.BootstrapLabel
-                    android:id="@+id/auto_Scale_Value_Counter"
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2.29"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="0" />
-
-                <Space
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <com.beardedhen.androidbootstrap.BootstrapButton
-                    android:id="@+id/auto_Scale_Add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+1"
-                    app:bootstrapBrand="success"
-                    app:showOutline="true" />
-
-                <Space
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <CheckBox
-                    android:id="@+id/auto_Scale_LeftPos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Left" />
-
-                <CheckBox
-                    android:id="@+id/auto_Scale_RightPos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Right" />
-
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <CheckBox
-                android:id="@+id/autoline_cross_bool"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Crossed Auto-Line" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </TableRow>
-    </TableLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/auto_Buttons">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/auto_rotate_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_sync_black_24dp" />
 
     </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/auto_cards"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/auto_cross_line">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+    <CheckBox
+        android:id="@+id/auto_cross_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/scouterName"
+        android:layout_alignRight="@+id/scouterName"
+        android:layout_below="@+id/auto_field"
+        android:text="Cross Auto Line" />
 
 </RelativeLayout>

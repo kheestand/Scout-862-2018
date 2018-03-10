@@ -1,7 +1,12 @@
 package com.example.kyle.scout_862_template.Tabs;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +17,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
+import com.example.kyle.scout_862_template.AutoCards.AutoCard;
+import com.example.kyle.scout_862_template.AutoCards.AutoCardAdapter;
 import com.example.kyle.scout_862_template.MatchScouting;
 import com.example.kyle.scout_862_template.R;
 import com.example.kyle.scout_862_template.Scout862.MatchDatabase;
 import com.tooltip.Tooltip;
+
+import org.apache.poi.hssf.util.HSSFColor;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,55 +43,64 @@ import es.dmoral.toasty.Toasty;
 
 public class AutoTab extends Fragment implements TabInterface {
     MatchDatabase matchDatabase = MatchScouting.matchDatabase;
-
-    @BindView(R.id.blue_left_button)
-    BootstrapButton blueStartLeft;
-    @BindView(R.id.blue_center_button)
-    BootstrapButton blueStartCenter;
-    @BindView(R.id.blue_right_button)
-    BootstrapButton blueStartRight;
-    @BindView(R.id.red_left_button)
-    BootstrapButton redStartLeft;
-    @BindView(R.id.red_center_button)
-    BootstrapButton redStartCenter;
-    @BindView(R.id.red_right_button)
-    BootstrapButton redStartRight;
+    @BindView(R.id.auto_cards)
+    RecyclerView autoCards;
     @BindView(R.id.interactive_field_rel)
-    RelativeLayout fieldContainer;
-    @BindView(R.id.interactive_field_rotate_button)
-    BootstrapButton rotateFieldButton;
-    @BindView(R.id.auto_Scale_Add)
-    BootstrapButton autoScaleAdd;
-    @BindView(R.id.auto_Scale_Subtract)
-    BootstrapButton autoScaleSubtract;
-    @BindView(R.id.auto_Scale_Value_Counter)
-    BootstrapLabel autoScaleValueCounter;
-    int autoScaleScore = 1;
-    @BindView(R.id.auto_Switch_Add)
-    BootstrapButton autoSwitchAdd;
-    @BindView(R.id.auto_Switch_Subtract)
-    BootstrapButton autoSwitchSubtract;
-    @BindView(R.id.auto_Switch_Value_Counter)
-    BootstrapLabel autoSwitchValueCounter;
-    @BindView(R.id.autoline_cross_bool)
-    CheckBox crossedAutoLine;
-    int autoSwitchScore = 1;
-    @BindView(R.id.auto_Switch_LeftPos)
-    CheckBox autoSwitchLeftPos;
-    @BindView(R.id.auto_Switch_RightPos)
-    CheckBox autoSwitchRightPos;
-    @BindView(R.id.auto_Scale_LeftPos)
-    CheckBox autoScaleLeftPos;
-    @BindView(R.id.auto_Scale_RightPos)
-    CheckBox autoScaleRightPos;
-
+    RelativeLayout fieldLayout;
+    @BindView(R.id.scouterName)
+    BootstrapEditText scouterNameBox;
+    @BindView(R.id.red_left_button)
+    BootstrapButton redLeftButton;
+    @BindView(R.id.red_right_button)
+    BootstrapButton redRightButton;
+    @BindView(R.id.red_center_button)
+    BootstrapButton redCenterButton;
+    @BindView(R.id.blue_left_button)
+    BootstrapButton blueLeftButton;
+    @BindView(R.id.blue_right_button)
+    BootstrapButton blueRightButton;
+    @BindView(R.id.blue_center_button)
+    BootstrapButton blueCenterButton;
+    @BindView(R.id.auto_cross_line)
+    CheckBox crossAutoLine;
+    @BindView(R.id.blue_switch_left)
+    CheckBox blueSwitchLeft;
+    @BindView(R.id.blue_switch_right)
+    CheckBox blueSwitchRight;
+    @BindView(R.id.red_switch_left)
+    CheckBox redSwitchLeft;
+    @BindView(R.id.red_switch_right)
+    CheckBox redSwitchRight;
+    @BindView(R.id.scale_1)
+    CheckBox scaleOne;
+    @BindView(R.id.scale_2)
+    CheckBox scaleTwo;
+    int startingPosition;
+    int[][] closeFarMatrix = {
+            {6,4,5,7},
+            {4,6,7,5},
+            {6,6,7,7},
+            {6,4,7,5},
+            {4,6,5,7},
+            {6,6,7,7}
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_auto_tab, container, false);
         ButterKnife.bind(this, view);
-        autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
-        autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
+        ArrayList<AutoCard> cardViews = new ArrayList<>();
+        autoCards.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
+        autoCards.setLayoutManager(linearLayoutManager);
+        AutoCard cubeTwo = new AutoCard(2, 9, 8, matchDatabase);
+        AutoCard cubeThree = new AutoCard(3, 11, 10, matchDatabase);
+        AutoCard cubeFour = new AutoCard(4, 13, 12, matchDatabase);
+        cardViews.add(cubeTwo);
+        cardViews.add(cubeThree);
+        cardViews.add(cubeFour);
+        AutoCardAdapter autoCardAdapter = new AutoCardAdapter(cardViews);
+        autoCards.setAdapter(autoCardAdapter);
         return view;
     }
 
@@ -97,297 +118,269 @@ public class AutoTab extends Fragment implements TabInterface {
 
     @Override
     public void readTab() {
-
-        switch (matchDatabase.getInt(3)){
-            case 0: crossedAutoLine.setChecked(false);
-                break;
-            case 1: crossedAutoLine.setChecked(true);
-                break;
-            default: crossedAutoLine.setChecked(false);
-        }
-
-        readSwitchValue();
-        readScaleValue();
+        scouterNameBox.setText(String.valueOf(matchDatabase.get(2)));
+        autoCards.getAdapter().notifyItemChanged(0);
+        autoCards.getAdapter().notifyItemChanged(1);
+        autoCards.getAdapter().notifyItemChanged(2);
+        if(matchDatabase.getInt(3) == 1)
+            crossAutoLine.setChecked(true);
+        else
+            crossAutoLine.setChecked(false);
+        startingPosition = matchDatabase.getInt(24);
+        setStartingPositionToolTip();
+        setBoxesChecked();
     }
 
     @Override
     public void writeTab() {
-
-        if(crossedAutoLine.isChecked())
-            matchDatabase.add(1, 3);
+        matchDatabase.add(scouterNameBox.getText().toString(), 2);
+        if(crossAutoLine.isChecked())
+            matchDatabase.add(1,3);
         else
-            matchDatabase.add(0, 3);
-
-        writeSwitchValue();
-        writeScaleValue();
+            matchDatabase.add(0,3);
+        matchDatabase.add(startingPosition,24);
     }
 
-    /**
-     * Game specific things
-     */
-
-    @OnClick(R.id.interactive_field_rotate_button)
-    public void flipField() {
-        if (fieldContainer.getRotation() == 180) {
-            fieldContainer.setRotation(0);
-            blueStartCenter.setRotation(0);
-            blueStartLeft.setRotation(0);
-            blueStartRight.setRotation(0);
-            redStartCenter.setRotation(0);
-            redStartLeft.setRotation(0);
-            redStartRight.setRotation(0);
-
-        } else {
-            fieldContainer.setRotation(180);
-            blueStartCenter.setRotation(180);
-            blueStartLeft.setRotation(180);
-            blueStartRight.setRotation(180);
-            redStartCenter.setRotation(180);
-            redStartLeft.setRotation(180);
-            redStartRight.setRotation(180);
+    @OnClick(R.id.auto_rotate_field)
+    public void rotateField(){
+        float rotation;
+        if(fieldLayout.getRotation() == 180f) {
+            rotation = 0f;
         }
-    }
-
-    @OnClick(R.id.auto_Switch_Add)
-    public void addToAutoSwitch() {
-        writeSwitchValue();
-        if (autoSwitchScore < 2) {
-            autoSwitchScore = autoSwitchScore + 1;
-            autoScaleScore = autoScaleScore + 1;
-            autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
-            autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
+        else{
+            rotation = 180f;
         }
-        readSwitchValue();
-    }
 
-    @OnClick(R.id.auto_Switch_Subtract)
-    public void subtractFromAutoSwitch() {
-        writeSwitchValue();
-        if (autoSwitchScore > 0) {
-            autoSwitchScore = autoSwitchScore - 1;
-            autoScaleScore = autoScaleScore - 1;
-            autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
-            autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
-        }
-        readSwitchValue();
-    }
-
-    @OnClick(R.id.auto_Scale_Add)
-    public void addToAutoScale() {
-        writeScaleValue();
-        if (autoScaleScore < 2) {
-            autoScaleScore = autoScaleScore + 1;
-            autoSwitchScore = autoSwitchScore + 1;
-            autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
-            autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
-        }
-        readScaleValue();
-    }
-
-    @OnClick(R.id.auto_Scale_Subtract)
-    public void subtractFromAutoScale() {
-        writeScaleValue();
-        if (autoScaleScore > 0) {
-            autoScaleScore = autoScaleScore - 1;
-            autoSwitchScore = autoSwitchScore - 1;
-            autoScaleValueCounter.setText(String.valueOf(autoScaleScore));
-            autoSwitchValueCounter.setText(String.valueOf(autoSwitchScore));
-        }
-        readScaleValue();
+        fieldLayout.setRotation(rotation);
+        blueCenterButton.setRotation(rotation);
+        blueLeftButton.setRotation(rotation);
+        blueRightButton.setRotation(rotation);
+        redCenterButton.setRotation(rotation);
+        redLeftButton.setRotation(rotation);
+        redRightButton.setRotation(rotation);
     }
 
     @OnClick(R.id.blue_right_button)
-    public void blueRightPress() {
-        matchDatabase.add(1,4);
-        Toasty.success(this.getContext(), "Starting Position: Blue Right").show();
+    public void blueButtonRight() {
+        if (matchDatabase.getAllianceColor().toLowerCase().contains("red")) {
+            Toasty.warning(this.getContext(), "Red can not start from Blue position!").show();
+        } else {
+            startingPosition = 2;
+        }
     }
-    @OnClick(R.id.blue_center_button)
-    public void blueCenterPress() {
-        matchDatabase.add(2,4);
-        Toasty.success(this.getContext(), "Starting Position: Blue Center").show();
-    }
+
     @OnClick(R.id.blue_left_button)
-    public void blueleftPress() {
-        matchDatabase.add(3,4);
-        Toasty.success(this.getContext(), "Starting Position: Blue Left").show();
+    public void blueButtonLeft() {
+        if (matchDatabase.getAllianceColor().toLowerCase().contains("red")) {
+            Toasty.warning(this.getContext(), "Red can not start from Blue position!").show();
+        } else {
+            startingPosition = 1;
+        }
     }
+
+    @OnClick(R.id.blue_center_button)
+    public void blueButtonCenter() {
+        if (matchDatabase.getAllianceColor().toLowerCase().contains("red")) {
+            Toasty.warning(this.getContext(), "Red can not start from Blue position!").show();
+        } else {
+            startingPosition = 3;
+        }
+    }
+
     @OnClick(R.id.red_right_button)
-    public void redRightPress() {
-        matchDatabase.add(1,4);
-        Toasty.success(this.getContext(), "Starting Position: Red Right").show();
+    public void redButtonRight() {
+        if (matchDatabase.getAllianceColor().toLowerCase().contains("blue")) {
+            Toasty.warning(this.getContext(), "Blue can not start from Red position!").show();
+        } else {
+            startingPosition = 5;
+        }
     }
-    @OnClick(R.id.red_center_button)
-    public void redCenterPress() {
-        matchDatabase.add(2,4);
-        Toasty.success(this.getContext(), "Starting Position: Red Center").show();
-    }
+
     @OnClick(R.id.red_left_button)
-    public void redLeftPress() {
-        matchDatabase.add(3,4);
-        Toasty.success(this.getContext(), "Starting Position: Red Left").show();
-    }
-
-    /**
-     * Tooltips when click on label
-     */
-    @OnClick(R.id.auto_Scale_Label)
-    public void longpressScaleLabel() {
-        Tooltip tooltip = new Tooltip.Builder(autoScaleValueCounter)
-                .setText("Auto Scale is located in the center of the field")
-                .setCancelable(true)
-                .setDismissOnClick(true)
-                .show();
-
-    }
-    @OnClick(R.id.auto_Switch_Label)
-    public void longpressSwitchLabel() {
-        Tooltip tooltip = new Tooltip.Builder(autoSwitchValueCounter)
-                .setText
-                        ("Auto Switches are located on the right and left side of the field")
-                .setCancelable(true)
-                .setDismissOnClick(true)
-                .show();
-    }
-
-    /**
-     * Check box constraints.
-     * We only want one check box checked at one time
-     */
-    @OnCheckedChanged(R.id.auto_Switch_LeftPos)
-    public void checkChLeftSwitch() {
-        if(autoSwitchRightPos.isChecked()) {
-            autoSwitchRightPos.setChecked(false);
+    public void redButtonLeft() {
+        if (matchDatabase.getAllianceColor().toLowerCase().contains("blue")) {
+            Toasty.warning(this.getContext(), "Blue can not start from Red position!").show();
+        } else {
+            startingPosition = 4;
         }
     }
 
-    @OnCheckedChanged(R.id.auto_Switch_RightPos)
-    public void checkChRightSwitch() {
-        if (autoSwitchLeftPos.isChecked()) {
-            autoSwitchLeftPos.setChecked(false);
+    @OnClick(R.id.red_center_button)
+    public void redButtonCenter() {
+        if (matchDatabase.getAllianceColor().toLowerCase().contains("blue")) {
+            Toasty.warning(this.getContext(), "Blue can not start from Red position!").show();
+        } else {
+            startingPosition = 6;
         }
     }
 
-    @OnCheckedChanged(R.id.auto_Scale_LeftPos)
-    public void checkChLeftScale() {
-        if(autoScaleRightPos.isChecked()) {
-            autoScaleRightPos.setChecked(false);
+    public void setStartingPositionToolTip(){
+        Tooltip tooltip;
+        System.out.println("Start pos: " + matchDatabase.getInt(24));
+        String text = "Starting position";
+        switch (startingPosition){
+            case 1: tooltip = new Tooltip.Builder(blueLeftButton)
+                    .setText(text)
+                    .setCancelable(true)
+                    .setBackgroundColor(Color.BLUE)
+                    .show();
+                break;
+            case 2: tooltip = new Tooltip.Builder(blueRightButton)
+                    .setText(text)
+                    .setCancelable(true)
+                    .setBackgroundColor(Color.BLUE)
+                    .show();
+                break;
+            case 3: tooltip = new Tooltip.Builder(blueCenterButton)
+                    .setText(text)
+                    .setCancelable(true)
+                    .setBackgroundColor(Color.BLUE)
+                    .show();
+                break;
+            case 4: tooltip = new Tooltip.Builder(redLeftButton)
+                    .setText(text)
+                    .setCancelable(true)
+                    .setBackgroundColor(Color.RED)
+                    .show();
+                break;
+            case 5:tooltip = new Tooltip.Builder(redRightButton)
+                    .setText(text)
+                    .setCancelable(true)
+                    .setBackgroundColor(Color.RED)
+                    .show();
+                break;
+            case 6:tooltip = new Tooltip.Builder(redCenterButton)
+                    .setText(text)
+                    .setCancelable(true)
+                    .setBackgroundColor(Color.RED)
+                    .show();
+                break;
+
+            default:tooltip = new Tooltip.Builder(fieldLayout)
+                    .setText("Set a position for the " + matchDatabase.getAllianceColor() + " robot! (Click me to dismiss!)")
+                    .setDismissOnClick(true)
+                    .show();
         }
     }
 
-    @OnCheckedChanged(R.id.auto_Scale_RightPos)
-    public void checkChRightScale() {
-        if(autoScaleLeftPos.isChecked()) {
-            autoScaleLeftPos.setChecked(false);
+    @OnCheckedChanged(R.id.blue_switch_left)
+    public void setBlueSwitchLeft() {
+        if(startingPosition != 0 && blueSwitchLeft.isChecked()) {
+            int colValue = closeFarMatrix[startingPosition - 1][0];
+            matchDatabase.add(1, colValue);
+        } else{
+            matchDatabase.add(0, 4);
+            matchDatabase.add(0, 6);
         }
     }
 
-    private void writeScaleValue() {
-        if(autoScaleScore == 1 ){
-            if(autoScaleRightPos.isChecked()) {
-                matchDatabase.add(1,8);
-            }
-            else if(autoScaleLeftPos.isChecked()) {
-                matchDatabase.add(1,7);
-            }
-            else {
-                matchDatabase.add(0,8);
-                matchDatabase.add(0,7);
-            }
+    @OnCheckedChanged(R.id.blue_switch_right)
+    public void setBlueSwitchRight() {
+        if (startingPosition != 0 && blueSwitchRight.isChecked()) {
+            int colValue = closeFarMatrix[startingPosition - 1][1];
+            matchDatabase.add(1, colValue);
         }
+        else {
+            matchDatabase.add(0, 4);
+            matchDatabase.add(0, 6);
+        }
+    }
 
-        if(autoScaleScore == 2 ){
-            if(autoScaleRightPos.isChecked()) {
-                matchDatabase.add(1,12);
+    @OnCheckedChanged(R.id.red_switch_left)
+    public void setRedSwitchLeft() {
+        if (startingPosition != 0 && redSwitchLeft.isChecked()) {
+            int colValue = closeFarMatrix[startingPosition - 1][0];
+            matchDatabase.add(1, colValue);
+        }
+        else{
+            matchDatabase.add(0, 4);
+            matchDatabase.add(0, 6);
+        }
+    }
+
+    @OnCheckedChanged(R.id.red_switch_right)
+    public void setRedSwitchRight() {
+        if (startingPosition != 0 && redSwitchRight.isChecked()) {
+            int colValue = closeFarMatrix[startingPosition - 1][1];
+            matchDatabase.add(1, colValue);
+        }
+        else {
+            matchDatabase.add(0, 4);
+            matchDatabase.add(0, 6);
+        }
+    }
+
+    @OnCheckedChanged(R.id.scale_1)
+    public void setScaleOne() {
+        if (startingPosition != 0 && scaleOne.isChecked()) {
+            int colValue = closeFarMatrix[startingPosition - 1][2];
+            matchDatabase.add(1, colValue);
+        }
+        else{
+            matchDatabase.add(0, 5);
+            matchDatabase.add(0, 7);
+        }
+    }
+
+    @OnCheckedChanged(R.id.scale_2)
+    public void setScaleTwo() {
+        if (startingPosition != 0 && scaleTwo.isChecked()) {
+            int colValue = closeFarMatrix[startingPosition - 1][3];
+            matchDatabase.add(1, colValue);
+        }
+        else {
+            matchDatabase.add(0, 5);
+            matchDatabase.add(0, 7);
+        }
+    }
+
+    public void setBoxesChecked() {
+        blueSwitchRight.setChecked(false);
+        blueSwitchLeft.setChecked(false);
+        blueSwitchRight.setChecked(false);
+        redSwitchRight.setChecked(false);
+        redSwitchLeft.setChecked(false);
+        redSwitchRight.setChecked(false);
+        scaleOne.setChecked(false);
+        scaleTwo.setChecked(false);
+        if (startingPosition != 0) {
+            int[] row = closeFarMatrix[startingPosition - 1];
+            int[] databaseRow = {matchDatabase.getInt(row[0]), matchDatabase.getInt(row[1]), matchDatabase.getInt(row[2]), matchDatabase.getInt(row[3])};
+            for(int num: databaseRow){
+                System.out.print(num + " ");
             }
-            else if(autoScaleLeftPos.isChecked()) {
-                matchDatabase.add(1,11);
-            }
-            else {
-                matchDatabase.add(0,12);
-                matchDatabase.add(0,11);
+            System.out.print("\n");
+            int columnWithValue = getColumnWithValue(databaseRow, 1);
+            if (startingPosition <= 3) {
+                if (columnWithValue == 0)
+                    blueSwitchLeft.setChecked(true);
+                else if (columnWithValue == 1)
+                    blueSwitchRight.setChecked(true);
+                else if (columnWithValue == 2)
+                    scaleOne.setChecked(true);
+                else if (columnWithValue == 3)
+                    scaleTwo.setChecked(true);
+            } else {
+                if (columnWithValue == 0)
+                    redSwitchLeft.setChecked(true);
+                else if (columnWithValue == 1)
+                    redSwitchRight.setChecked(true);
+                else if (columnWithValue == 2)
+                    scaleOne.setChecked(true);
+                else if (columnWithValue == 3)
+                    scaleTwo.setChecked(true);
             }
         }
     }
 
-    private void readScaleValue() {
-        if(autoScaleScore == 1) {
-            if(matchDatabase.getInt(8) == 1) {
-                autoScaleLeftPos.setChecked(false);
-                autoScaleRightPos.setChecked(true);
-            }
-            else autoScaleRightPos.setChecked(false);
-            if(matchDatabase.getInt(7) == 1) {
-                autoScaleRightPos.setChecked(false);
-                autoScaleLeftPos.setChecked(true);
-            }
-            else autoScaleLeftPos.setChecked(false);
+    public int getColumnWithValue(int[] array, int value){
+        int counter = 0;
+        for(int number : array){
+            if(number == value)
+                return counter;
+            else
+                counter++;
         }
-        else if(autoScaleScore == 2) {
-            if(matchDatabase.getInt(12) == 1) {
-                autoScaleLeftPos.setChecked(false);
-                autoScaleRightPos.setChecked(true);
-            }
-            else autoScaleRightPos.setChecked(false);
-            if(matchDatabase.getInt(11) == 1) {
-                autoScaleRightPos.setChecked(false);
-                autoScaleLeftPos.setChecked(true);
-            }
-            else autoScaleLeftPos.setChecked(false);
-        }
-    }
-
-    private void writeSwitchValue() {
-        if(autoSwitchScore == 1 ){
-            if(autoSwitchRightPos.isChecked()) {
-                matchDatabase.add(1,6);
-            }
-            else if(autoSwitchLeftPos.isChecked()) {
-                matchDatabase.add(1,5);
-            }
-            else {
-                matchDatabase.add(0,6);
-                matchDatabase.add(0,5);
-            }
-        }
-
-        if(autoSwitchScore == 2 ){
-            if(autoSwitchRightPos.isChecked()) {
-                matchDatabase.add(1,10);
-            }
-            else if(autoSwitchLeftPos.isChecked()) {
-                matchDatabase.add(1,9);
-            }
-            else {
-                matchDatabase.add(0,10);
-                matchDatabase.add(0,9);
-            }
-        }
-    }
-
-    private void readSwitchValue() {
-        if(autoSwitchScore == 1) {
-            if(matchDatabase.getInt(6) == 1) {
-                autoSwitchLeftPos.setChecked(false);
-                autoSwitchRightPos.setChecked(true);
-            }
-            else autoSwitchRightPos.setChecked(false);
-            if(matchDatabase.getInt(5) == 1) {
-                autoSwitchRightPos.setChecked(false);
-                autoSwitchLeftPos.setChecked(true);
-            }
-            else autoSwitchLeftPos.setChecked(false);
-        }
-        else if(autoSwitchScore == 2) {
-            if(matchDatabase.getInt(10) == 1) {
-                autoSwitchLeftPos.setChecked(false);
-                autoSwitchRightPos.setChecked(true);
-            }
-            else autoSwitchRightPos.setChecked(false);
-            if(matchDatabase.getInt(9) == 1) {
-                autoSwitchRightPos.setChecked(false);
-                autoSwitchLeftPos.setChecked(true);
-            }
-            else autoSwitchLeftPos.setChecked(false);
-        }
+        return 0;
     }
 }

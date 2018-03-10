@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,6 +29,18 @@ public class EndGameTab extends Fragment implements TabInterface {
     RadioGroup robotEndGameButtons;
     @BindView(R.id.endGameCommentBox)
     EditText commentsBox;
+    @BindView(R.id.robot_Dead)
+    CheckBox robotDead;
+    @BindView(R.id.climb_on_rung)
+    RadioButton hangs;
+    @BindView(R.id.climb_while_lifting)
+    RadioButton climbWhileLift;
+    @BindView(R.id.rampbot_1)
+    RadioButton rampbotOne;
+    @BindView(R.id.rampbot_2)
+    RadioButton rampbotTwo;
+    @BindView(R.id.parks)
+    RadioButton park;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,57 +61,51 @@ public class EndGameTab extends Fragment implements TabInterface {
 
     @Override
     public void readTab() {
-        if(matchDatabase.getInt(17) == 1)
-            robotEndGameButtons.check(R.id.climbs_On_Field_Rung);
-        else if(matchDatabase.getInt(18) == 1)
-            robotEndGameButtons.check(R.id.climbs_Robot_Rung);
-        else if(matchDatabase.getInt(19) == 1)
-            robotEndGameButtons.check(R.id.climbs_On_Ramp);
-        else if(matchDatabase.getInt(20) == 1)
-            robotEndGameButtons.check(R.id.supports_One_Ramp);
-        else if(matchDatabase.getInt(21) == 1)
-            robotEndGameButtons.check(R.id.supports_Two_Ramp);
-        else if(matchDatabase.getInt(22) == 1)
-            robotEndGameButtons.check(R.id.supports_One_Rung);
-        else if(matchDatabase.getInt(23) == 1)
-            robotEndGameButtons.check(R.id.supports_Two_Rung);
-        else if (matchDatabase.getInt(24) == 1)
-            robotEndGameButtons.check(R.id.robot_Parks);
+        robotEndGameButtons.clearCheck();
+        if(matchDatabase.getInt(2) == 1)
+            robotDead.setChecked(true);
         else
-            robotEndGameButtons.clearCheck();
-        commentsBox.setText(matchDatabase.get(25));
+            robotDead.setChecked(false);
+        commentsBox.setText(String.valueOf(matchDatabase.get(23)));
+
+        if(matchDatabase.getInt(18) == 1)
+            hangs.setChecked(true);
+        else if(matchDatabase.getInt(19) == 1)
+            climbWhileLift.setChecked(true);
+        else if(matchDatabase.getInt(20) == 1)
+            rampbotOne.setChecked(true);
+        else if(matchDatabase.getInt(21) == 1)
+            rampbotTwo.setChecked(true);
+        else if(matchDatabase.getInt(22) == 1)
+            park.setChecked(true);
     }
+
 
     @Override
     public void writeTab() {
-        switch(robotEndGameButtons.getCheckedRadioButtonId()){
-            case R.id.climbs_On_Field_Rung: matchDatabase.add(1,17);
+        matchDatabase.add(0,18);
+        matchDatabase.add(0,19);
+        matchDatabase.add(0,20);
+        matchDatabase.add(0,21);
+        matchDatabase.add(0,22);
+
+        if(robotDead.isChecked())
+            matchDatabase.add(1,2);
+        else
+            matchDatabase.add(0,2);
+        matchDatabase.add(commentsBox.getText().toString(), 23);
+        switch (robotEndGameButtons.getCheckedRadioButtonId()){
+            case R.id.climb_on_rung: matchDatabase.add(1,18);
                 break;
-            case R.id.climbs_Robot_Rung: matchDatabase.add(1,18);
+            case R.id.climb_while_lifting: matchDatabase.add(1,19);
                 break;
-            case R.id.climbs_On_Ramp: matchDatabase.add(1,19);
+            case R.id.rampbot_1: matchDatabase.add(1,20);
                 break;
-            case R.id.supports_One_Ramp: matchDatabase.add(1,20);
+            case R.id.rampbot_2: matchDatabase.add(1,21);
                 break;
-            case R.id.supports_Two_Ramp: matchDatabase.add(1,21);
+            case R.id.parks: matchDatabase.add(1,22);
                 break;
-            case R.id.supports_One_Rung: matchDatabase.add(1,22);
-                break;
-            case R.id.supports_Two_Rung: matchDatabase.add(1,23);
-                break;
-            case R.id.robot_Parks: matchDatabase.add(1, 24);
-                break;
-            default:
-                matchDatabase.add(0,17);
-                matchDatabase.add(0,18);
-                matchDatabase.add(0,19);
-                matchDatabase.add(0,20);
-                matchDatabase.add(0,21);
-                matchDatabase.add(0,22);
-                matchDatabase.add(0,23);
-                matchDatabase.add(0,24);
         }
-        matchDatabase.add(commentsBox.getText().toString(), 25);
     }
 
 }

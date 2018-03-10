@@ -23,70 +23,55 @@
             android:layout_height="234dp">
 
             <RadioButton
-                android:id="@+id/climbs_On_Ramp"
+                android:id="@+id/climb_on_rung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Climbs on another Ramp Bot" />
+                android:text="Hangs" />
 
             <RadioButton
-                android:id="@+id/supports_One_Ramp"
+                android:id="@+id/climb_while_lifting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rampbot Supports One Robot" />
+                android:text="Climbs while Lifting Robot" />
 
             <RadioButton
-                android:id="@+id/supports_Two_Ramp"
+                android:id="@+id/rampbot_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rampbot Supports Two Robots" />
+                android:text="Supports other using ramp" />
 
             <RadioButton
-                android:id="@+id/climbs_On_Field_Rung"
+                android:id="@+id/rampbot_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Climbs on Field Rung" />
+                android:text="Cllimbs on Rampbot" />
 
             <RadioButton
-                android:id="@+id/climbs_Robot_Rung"
+                android:id="@+id/parks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Climbs on another Robot's Rung" />
-
-            <RadioButton
-                android:id="@+id/supports_One_Rung"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rungbot Supports One Robot" />
-
-            <RadioButton
-                android:id="@+id/supports_Two_Rung"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rungbot Supports Two Robots" />
-
-            <RadioButton
-                android:id="@+id/robot_Parks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Robot Parks" />
-
+                android:text="Parks" />
         </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/robot_Dead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Robot was Dead" />
 
         <EditText
             android:id="@+id/endGameCommentBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="168dp"
             android:ems="10"
             android:hint="Comments...?"
             android:inputType="textMultiLine" />
+
     </LinearLayout>
 
 </RelativeLayout>

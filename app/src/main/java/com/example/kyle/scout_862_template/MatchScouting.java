@@ -258,7 +258,7 @@ public class MatchScouting extends AppCompatActivity {
                     try {
                         JsonObject simpleEvent = fetcher.getSimpleEventFromCache(currentEvent);
                         JsonObject teamEventObj = fetcher.getRobotEventObjectFromCache(team, currentEvent);
-                        matchCards.add(new ListClass(simpleEvent, teamEventObj, null));
+                        //matchCards.add(new ListClass(simpleEvent, teamEventObj, null));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

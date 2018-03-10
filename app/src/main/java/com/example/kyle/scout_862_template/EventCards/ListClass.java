@@ -16,7 +16,7 @@ public class ListClass {
     String eventCode;
     String status;
 
-    public ListClass(JsonObject simpleEventObj, JsonObject teamEventObj, JSONObject teamAwardObj) {
+    public ListClass(JsonObject simpleEventObj, JsonObject teamEventObj ) {
 
         if (simpleEventObj == null)
             return;
