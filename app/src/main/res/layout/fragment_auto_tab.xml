@@ -23,7 +23,9 @@
     <FrameLayout
         android:id="@+id/auto_field"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/auto_cross_line"
+        android:layout_below="@+id/scouterName">
 
         <RelativeLayout
             android:id="@+id/interactive_field_rel"
@@ -213,6 +215,7 @@
         android:layout_alignLeft="@+id/scouterName"
         android:layout_alignRight="@+id/scouterName"
         android:layout_below="@+id/auto_field"
-        android:text="Cross Auto Line" />
+        android:text="Cross Auto Line"
+        android:textSize="18sp" />
 
 </RelativeLayout>

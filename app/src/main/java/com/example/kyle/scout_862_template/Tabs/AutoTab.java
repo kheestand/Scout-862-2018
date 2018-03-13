@@ -118,7 +118,7 @@ public class AutoTab extends Fragment implements TabInterface {
 
     @Override
     public void readTab() {
-        scouterNameBox.setText(String.valueOf(matchDatabase.get(2)));
+        scouterNameBox.setText(String.valueOf(matchDatabase.get(1)));
         autoCards.getAdapter().notifyItemChanged(0);
         autoCards.getAdapter().notifyItemChanged(1);
         autoCards.getAdapter().notifyItemChanged(2);
@@ -133,7 +133,7 @@ public class AutoTab extends Fragment implements TabInterface {
 
     @Override
     public void writeTab() {
-        matchDatabase.add(scouterNameBox.getText().toString(), 2);
+        matchDatabase.add(scouterNameBox.getText().toString(), 1);
         if(crossAutoLine.isChecked())
             matchDatabase.add(1,3);
         else
@@ -166,6 +166,7 @@ public class AutoTab extends Fragment implements TabInterface {
             Toasty.warning(this.getContext(), "Red can not start from Blue position!").show();
         } else {
             startingPosition = 2;
+            Toasty.info(this.getContext(), "Starting position set!").show();
         }
     }
 
@@ -175,6 +176,7 @@ public class AutoTab extends Fragment implements TabInterface {
             Toasty.warning(this.getContext(), "Red can not start from Blue position!").show();
         } else {
             startingPosition = 1;
+            Toasty.info(this.getContext(), "Starting position set!").show();
         }
     }
 
@@ -184,6 +186,7 @@ public class AutoTab extends Fragment implements TabInterface {
             Toasty.warning(this.getContext(), "Red can not start from Blue position!").show();
         } else {
             startingPosition = 3;
+            Toasty.info(this.getContext(), "Starting position set!").show();
         }
     }
 
@@ -193,6 +196,7 @@ public class AutoTab extends Fragment implements TabInterface {
             Toasty.warning(this.getContext(), "Blue can not start from Red position!").show();
         } else {
             startingPosition = 5;
+            Toasty.info(this.getContext(), "Starting position set!").show();
         }
     }
 
@@ -202,6 +206,7 @@ public class AutoTab extends Fragment implements TabInterface {
             Toasty.warning(this.getContext(), "Blue can not start from Red position!").show();
         } else {
             startingPosition = 4;
+            Toasty.info(this.getContext(), "Starting position set!").show();
         }
     }
 
@@ -211,6 +216,7 @@ public class AutoTab extends Fragment implements TabInterface {
             Toasty.warning(this.getContext(), "Blue can not start from Red position!").show();
         } else {
             startingPosition = 6;
+            Toasty.info(this.getContext(), "Starting position set!").show();
         }
     }
 
